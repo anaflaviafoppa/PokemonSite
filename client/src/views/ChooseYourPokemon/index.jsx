@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 
 /*Services*/
 import {single as singlePokemon} from '../../services/pokemon';
+import {editUser} from '../../services/pokemon';
 import UserAll from './../../services/userall';
 
 
@@ -23,6 +24,7 @@ export default class ChooseYourPokemon extends Component {
     this.RandomNumber=this.RandomNumber.bind(this);
     this.triggerUpdatePokemon=this.triggerUpdatePokemon.bind(this);
     this.triggerUpdateUsersForScore=this.triggerUpdateUsersForScore.bind(this);
+    this.addPokemon=this.addPokemon.bind(this);
   }
 
    async componentDidMount(){
@@ -56,6 +58,10 @@ export default class ChooseYourPokemon extends Component {
     this.setState({users});
    }
 
+   async addPokemon(){
+    await editUser(this.props.user._id,this.state.pokemon.name);
+   }
+
   render() {
 
     
@@ -80,6 +86,10 @@ export default class ChooseYourPokemon extends Component {
 
             <button onClick={this.triggerUpdatePokemon}>
               Random pokemon
+            </button>
+
+            <button onClick={this.addPokemon}>
+              <img src="./../images/pokeball.svg" alt="pokeball" />
             </button>
             
           </div>

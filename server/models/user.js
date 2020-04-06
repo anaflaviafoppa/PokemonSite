@@ -26,7 +26,7 @@ const schema = new mongoose.Schema({
   },
   pokemons:[
     {
-      type:Number
+      type:String
     }
   ]
 });

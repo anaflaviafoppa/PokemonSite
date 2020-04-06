@@ -20,4 +20,13 @@ const single = async data => {
   }
 };
 
-export { single };
+const editUser = async (id,pokemon) => {
+  try{
+  
+    await instance.put(`/edituser/${id}/${pokemon}`); 
+  }catch (error) {
+    throw error;
+  }
+}
+
+export { single, editUser };

@@ -72,7 +72,7 @@ class Navbar extends Component {
 
 
   render() {
-    console.log(this.props.users)
+    
     
     return (
       <nav className="nav-style">

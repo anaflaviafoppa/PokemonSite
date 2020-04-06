@@ -5,6 +5,10 @@ const axios = require('axios');
 const router = new Router();
 const routeGuard = require('./../middleware/route-guard');
 
+/*MODELS*/
+const User = require('./../models/user');
+
+
 
 /*SINGLE RANDOM POKEMON*/
 router.get('/single/:number',routeGuard, (req, res, next) => {
@@ -22,6 +26,24 @@ router.get('/single/:number',routeGuard, (req, res, next) => {
        console.log(error);
        res.json(error);
      });
+});
+
+
+/*Adicionar o Pokemon */
+router.put('/edituser/:id/:pokemon', (req, res, next) => {
+  User.findByIdAndUpdate(
+    req.params.id,
+    {
+      $push: { pokemons: req.params.pokemon }
+    },
+    { new: true }
+  )
+    .then(user => {
+      res.json(user);
+    })
+    .catch(error => {
+      res.json(error);
+    });
 });
 
 
