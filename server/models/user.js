@@ -16,6 +16,10 @@ const schema = new mongoose.Schema({
   passwordHash: {
     type: String
   },
+  picture: {
+    type: String,
+    default: 'https://res.cloudinary.com/dq4jevckc/image/upload/v1584440915/avatar_kletok.svg'
+  },
   score:{
     type: Number,
     default:0

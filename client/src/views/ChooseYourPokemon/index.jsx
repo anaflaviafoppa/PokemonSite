@@ -6,6 +6,8 @@ import {single as singlePokemon} from '../../services/pokemon';
 
 /*COMPONENTS*/
 import SpritesPokemon from '../../components/spritesPokemon';
+import NavBar from './../../components/NavBar';
+
 
 
 export default class ChooseYourPokemon extends Component {
@@ -48,19 +50,30 @@ export default class ChooseYourPokemon extends Component {
 
     
     return (
-      this.state.pokemon !== '' &&
       <div>
-        <h1>{this.state.pokemon.name}</h1>
-        
-        <SpritesPokemon 
-          name={this.state.pokemon.name}
-          src={this.state.pokemon.sprites.front_default} />
+        <NavBar
+          user={this.props.user}
+          {...this.props}
+          updateUserInformation={this.props.updateUserInformation}
+        />
 
-        <button onClick={this.triggerUpdatePokemon}>
-          Random pokemon
-        </button>
-        
+        {this.state.pokemon !== '' &&
+          <div>
+
+            <h1>{this.state.pokemon.name}</h1>
+            
+            <SpritesPokemon 
+              name={this.state.pokemon.name}
+              src={this.state.pokemon.sprites.front_default} />
+
+            <button onClick={this.triggerUpdatePokemon}>
+              Random pokemon
+            </button>
+            
+          </div>
+        }
       </div>
+      
       
     )
   }
