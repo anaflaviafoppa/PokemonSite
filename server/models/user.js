@@ -15,7 +15,16 @@ const schema = new mongoose.Schema({
   },
   passwordHash: {
     type: String
-  }
+  },
+  score:{
+    type: Number,
+    default:0
+  },
+  pokemons:[
+    {
+      type:Number
+    }
+  ]
 });
 
 module.exports = mongoose.model('User', schema);

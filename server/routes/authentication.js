@@ -27,6 +27,7 @@ router.post('/sign-up', (req, res, next) => {
     });
 });
 
+
 router.post('/sign-in', (req, res, next) => {
   let user;
   const { email, password } = req.body;
@@ -55,6 +56,11 @@ router.post('/sign-in', (req, res, next) => {
 router.post('/sign-out', (req, res, next) => {
   req.session.destroy();
   res.json({});
+});
+
+//User Information Route
+router.get('/user-information', (req, res, next) => {
+  res.json({ user: req.user || null });
 });
 
 module.exports = router;
