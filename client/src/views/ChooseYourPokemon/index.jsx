@@ -9,6 +9,7 @@ import UserAll from './../../services/userall';
 /*COMPONENTS*/
 import SpritesPokemon from '../../components/spritesPokemon';
 import NavBar from './../../components/NavBar';
+import Stats from './../../components/Stats';
 
 
 
@@ -83,6 +84,19 @@ export default class ChooseYourPokemon extends Component {
             <SpritesPokemon 
               name={this.state.pokemon.name}
               src={this.state.pokemon.sprites.front_default} />
+
+            <h2>Abilities:</h2>
+            <ul>
+              {this.state.pokemon.abilities.map( ability => 
+              <li key={ability.ability.name}>{ability.ability.name}</li>
+              )}
+            </ul>
+
+            <h2>Type:</h2>
+            <p>{this.state.pokemon.types[0].type.name}</p>
+
+            <h2>Stats: </h2>
+            <Stats pokemon={this.state.pokemon} />
 
             <button onClick={this.triggerUpdatePokemon}>
               Random pokemon

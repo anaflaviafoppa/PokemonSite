@@ -10,7 +10,7 @@ const User = require('./../models/user');
 
 
 
-/*SINGLE RANDOM POKEMON*/
+/*SINGLE POKEMON*/
 router.get('/single/:number',routeGuard, (req, res, next) => {
 
   //Params to request the API
