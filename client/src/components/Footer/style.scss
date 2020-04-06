@@ -1,0 +1,25 @@
+$darkColor: #3f3d56;
+$purple: #6c63ff;
+$lightGrey: #e2e2e2;
+
+.footer-style {
+  display: flex;
+  background-color: $darkColor;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  padding: 0.5em 1em;
+
+  h5 {
+    font-size: 1.5em;
+    font-weight: 800;
+    color: $purple;
+    small{
+      font-size: 1em;
+    font-weight: 200;
+    color: white;
+    }
+  }
+}

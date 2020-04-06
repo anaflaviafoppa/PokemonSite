@@ -15,6 +15,7 @@ import UserAll from './../../services/userall';
 import SpritesPokemon from '../../components/spritesPokemon';
 import NavBar from './../../components/NavBar';
 import Stats from './../../components/Stats';
+import FooterHome from './../../components/Footer';
 
 
 
@@ -153,6 +154,8 @@ export default class ChooseYourPokemon extends Component {
               alt="pokeball" />
             </button>
             
+
+            <FooterHome />
           </div>
         }
       </div>
