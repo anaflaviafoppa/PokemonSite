@@ -12,6 +12,8 @@ import { loadUserInformation } from './services/authentication';
 /*VIEWS*/
 import Home from './views/ChooseYourPokemon';
 import SignInSignOut from './views/SignInSingOut';
+import EditProfileView from './views/editProfile';
+
 
 export default class App extends Component {
   constructor(){
@@ -66,6 +68,21 @@ export default class App extends Component {
                   />
                 )}
           />
+
+          {/* This Route will show the inputs for edit profile */}
+          <ProtectedRoute
+                path="/edit"
+                exact
+                authorized={this.state.user}
+                redirect={'/home'}
+                render={props => (
+                  <EditProfileView
+                    {...props}
+                    user={this.state.user}
+                    updateUserInformation={this.updateUserInformation}
+                  />
+                )}
+              />
 
           
         </Switch>
