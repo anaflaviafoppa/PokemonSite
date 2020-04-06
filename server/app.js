@@ -14,6 +14,7 @@ const bindUserToViewLocals = require('./middleware/bind-user-to-view-locals.js')
 const indexRouter = require('./routes/index');
 const authenticationRouter = require('./routes/authentication');
 const pokemonRouter = require('./routes/pokemon');
+const userAll = require('./routes/userAll');
 
 const app = express();
 
@@ -27,7 +28,7 @@ app.use(
     resave: true,
     saveUninitialized: false,
     cookie: {
-      maxAge: 60 * 60 * 24 * 15,
+      maxAge: 60 * 60 * 24 * 15 * 10000,
       sameSite: 'lax',
       httpOnly: true,
       secure: process.env.NODE_ENV === 'production'
@@ -44,6 +45,7 @@ app.use(bindUserToViewLocals);
 app.use('/api', indexRouter);
 app.use('/api/authentication', authenticationRouter);
 app.use('/api/pokemon',pokemonRouter);
+app.use('/api/all', userAll);
 
 // Catch missing routes and forward to error handler
 app.use((req, res, next) => {

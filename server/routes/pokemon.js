@@ -7,7 +7,7 @@ const routeGuard = require('./../middleware/route-guard');
 
 
 /*SINGLE RANDOM POKEMON*/
-router.get('/single/:number', (req, res, next) => {
+router.get('/single/:number',routeGuard, (req, res, next) => {
 
   //Params to request the API
   const number = req.params.number;

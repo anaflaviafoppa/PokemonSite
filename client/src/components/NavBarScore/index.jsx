@@ -1,30 +1,18 @@
-//it is the pink menu
+
 import './style.scss';
 import React, { Component } from 'react';
-import { signOut } from './../../services/authentication';
 import { useSwipeable, Swipeable } from 'react-swipeable';
 import { Link } from 'react-router-dom';
+
+
+
 
 class NavBarScore extends Component {
   constructor(props) {
     super(props);
-    this.state={
-      users:[]
-    };
-
-    this.handleSignOut = this.handleSignOut.bind(this);
   }
 
-  handleSignOut = () => {
-    signOut()
-      .then(() => {
-        this.props.updateUserInformation(null);
-      })
-      .catch(error => {
-        console.log(error);
-      });
-  };
-
+  
   render() {
     var visibility = 'hide';
 
@@ -33,13 +21,13 @@ class NavBarScore extends Component {
     }
 
     return (
-      <Swipeable onSwipedLeft={this.props.handleMouseDownProfile}>
-        <div id="flyoutSidebarProfile" className={visibility}>
-          <Link to="/" onMouseDown={this.props.handleMouseDownProfile}>
+      <Swipeable onSwipedLeft={this.props.handleMouseDownScore}>
+        <div id="flyoutMenu" className={visibility}>
+          <Link to="/" onMouseDown={this.props.handleMouseDownScore}>
             <img
               style={{
                 width: '2em',
-                float: 'right',
+                float: 'left',
                 position: 'relative',
                 margin: '2em 1em'
               }}
@@ -47,46 +35,18 @@ class NavBarScore extends Component {
               alt="go back icon"
             />
           </Link>
-          <img
-            style={{
-              width: '10em',
-              height: '10em',
-              margin: '0 auto',
-              borderRadius: '50%',
-              objectFit: 'cover'
-            }}
-            src={this.props.user.picture}
-            alt={this.props.user.name}
-          />
-          <h2 style={{ color: 'white', fontWeight: '500', marginTop: '1em' }}>
-            {this.props.user.name}
-          </h2>
-          <small style={{ color: 'white', fontWeight: '200' }}>{this.props.user.email}</small>
 
-          <Link
-            style={{
-              backgroundColor: '#3f3d56',
-              fontWeight: '200',
-              color: 'white',
-              margin: '3em 6em 7em 6em',
-              borderRadius: '2em',
-              padding: '0.3em 1em'
-            }}
-            to="/edit"
-          >
-            Edit Profile
-          </Link>
-
-          <button style={{ color: 'white' }} onClick={this.handleSignOut}>
-            <img
-              style={{ width: '1.6em', margin: '1em' }}
-              src="./../images/logout.svg"
-              alt="logout icon"
-            />
-            Logout
-          </button>
-         
+          <h1>SCORE:</h1>
+          {this.props.users.map(user => 
+            <div key={user._id}>
+              <h2>{user.name}</h2>
+              <h3>{user.score}</h3>
+            </div>
+          )}
         </div>
+
+
+        
       </Swipeable>
     );
   }

@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 
 /*Services*/
 import {single as singlePokemon} from '../../services/pokemon';
+import UserAll from './../../services/userall';
 
 
 /*COMPONENTS*/
@@ -15,11 +16,13 @@ export default class ChooseYourPokemon extends Component {
     super();
     this.state={
       numberIdPokemon:12,
-      pokemon:''
+      pokemon:'',
+      users:[]
     }
 
     this.RandomNumber=this.RandomNumber.bind(this);
     this.triggerUpdatePokemon=this.triggerUpdatePokemon.bind(this);
+    this.triggerUpdateUsersForScore=this.triggerUpdateUsersForScore.bind(this);
   }
 
    async componentDidMount(){
@@ -31,6 +34,8 @@ export default class ChooseYourPokemon extends Component {
 
      const number = this.state.numberIdPokemon;
      const pokemon = await singlePokemon({number});
+     
+     await this.triggerUpdateUsersForScore();
     
      this.setState({pokemon});
    }
@@ -46,6 +51,11 @@ export default class ChooseYourPokemon extends Component {
      this.fetchData();
    }
 
+   async triggerUpdateUsersForScore(){
+    const users = await UserAll();
+    this.setState({users});
+   }
+
   render() {
 
     
@@ -53,8 +63,10 @@ export default class ChooseYourPokemon extends Component {
       <div>
         <NavBar
           user={this.props.user}
+          users={this.state.users}
           {...this.props}
           updateUserInformation={this.props.updateUserInformation}
+          updateUsersScore={this.triggerUpdateUsersForScore}
         />
 
         {this.state.pokemon !== '' &&

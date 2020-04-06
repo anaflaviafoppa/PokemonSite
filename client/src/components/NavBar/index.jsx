@@ -52,8 +52,10 @@ class Navbar extends Component {
 
   //for the Score Menu:
 
-  handleMouseDownScore() {
+  async handleMouseDownScore() {
+    await this.props.triggerUpdateUsersForScore;
     this.toggleMenuScore();
+    
   }
 
   toggleMenuScore() {
@@ -70,6 +72,7 @@ class Navbar extends Component {
 
 
   render() {
+    console.log(this.props.users)
     
     return (
       <nav className="nav-style">
@@ -77,10 +80,12 @@ class Navbar extends Component {
         <NavBarScoreButton
           user={this.props.user}
           handleMouseDownScore={this.handleMouseDownScore}
+          
         />
 
         <NavBarScore
           user={this.props.user}
+          users={this.props.users}
           handleMouseDownScore={this.handleMouseDownScore}
           menuVisibility={this.state.visibleScore}
           updateUserInformation={this.props.updateUserInformation}
@@ -88,6 +93,7 @@ class Navbar extends Component {
 
         <NavBarProfile
           user={this.props.user}
+          users={this.props.users}
           handleMouseDownProfile={this.handleMouseDownProfile}
           menuVisibility={this.state.visibleProfile}
           updateUserInformation={this.props.updateUserInformation}
