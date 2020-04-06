@@ -20,13 +20,30 @@ const single = async data => {
   }
 };
 
-const editUser = async (id,pokemon) => {
-  try{
+const editUser = async (data) => {
+  const id = data.id;
+  const pokemon = data.pokemon;
   
-    await instance.put(`/edituser/${id}/${pokemon}`); 
+
+  
+    try{
+      await instance.put(`/edituser/${id}/${pokemon}`); 
+    }catch (error) {
+      throw error;
+    }
+  
+}
+
+const editUserCounters = async (data) => {
+  const id = data.id;
+  const counterRandom = data.counterRandom;
+  
+
+  try{
+    await instance.put(`/editUserCounters/${id}/${counterRandom}`); 
   }catch (error) {
     throw error;
   }
 }
 
-export { single, editUser };
+export { single, editUser, editUserCounters };

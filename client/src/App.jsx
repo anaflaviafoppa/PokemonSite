@@ -24,11 +24,24 @@ export default class App extends Component {
     }
 
     this.updateUserInformation = this.updateUserInformation.bind(this);
+    this.loadUserInformation=this.loadUserInformation.bind(this);
   };
 
   componentDidMount() {
     loadUserInformation()
       .then(user => this.updateUserInformation(user))
+      .catch(error => {
+        console.log(error);
+      });
+  }
+
+  loadUserInformation(){
+    loadUserInformation()
+      .then(user => 
+        this.setState({
+          user
+        })
+      )
       .catch(error => {
         console.log(error);
       });
@@ -64,7 +77,8 @@ export default class App extends Component {
               <Home
                 user={this.state.user}
                 {...props}
-                    updateUserInformation={this.updateUserInformation}
+                updateUserInformation={this.updateUserInformation}
+                loadUserInformation={this.loadUserInformation}
                   />
                 )}
           />

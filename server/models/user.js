@@ -24,11 +24,22 @@ const schema = new mongoose.Schema({
     type: Number,
     default:0
   },
-  pokemons:[
+  pokemons: [
     {
-      type:String
-    }
-  ]
+       pokemon: {
+          type: String
+       },
+       timesPlayed: {
+          type: Number,
+          default:0 
+       }
+     }
+  ],
+  counterRandom:{
+    type: Number,
+    default:0
+    
+  }
 });
 
 module.exports = mongoose.model('User', schema);

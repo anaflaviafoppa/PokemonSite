@@ -31,10 +31,14 @@ router.get('/single/:number',routeGuard, (req, res, next) => {
 
 /*Adicionar o Pokemon */
 router.put('/edituser/:id/:pokemon', (req, res, next) => {
+  const pokemon = req.params.pokemon;
+
   User.findByIdAndUpdate(
     req.params.id,
     {
-      $push: { pokemons: req.params.pokemon }
+      $push: { 
+        pokemons: {pokemon} 
+      }
     },
     { new: true }
   )
@@ -45,6 +49,25 @@ router.put('/edituser/:id/:pokemon', (req, res, next) => {
       res.json(error);
     });
 });
+
+
+router.put('/editUserCounters/:id/:counterRandom', (req, res, next) => {
+  const counterRandom = req.params.counterRandom;
+  
+
+  User.findByIdAndUpdate(
+    req.params.id,
+    {counterRandom},
+    { new: true }
+  )
+    .then(user => {
+      res.json(user);
+    })
+    .catch(error => {
+      res.json(error);
+    });
+});
+
 
 
 module.exports = router;

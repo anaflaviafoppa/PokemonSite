@@ -1,8 +1,13 @@
 import React, { Component } from 'react'
 
+/*Packages*/
+import { Button } from 'react-bootstrap';
+
+
 /*Services*/
 import {single as singlePokemon} from '../../services/pokemon';
 import {editUser} from '../../services/pokemon';
+import {editUserCounters} from '../../services/pokemon';
 import UserAll from './../../services/userall';
 
 
@@ -19,6 +24,7 @@ export default class ChooseYourPokemon extends Component {
     this.state={
       numberIdPokemon:12,
       pokemon:'',
+      counterRandom:0,
       users:[]
     }
 
@@ -29,42 +35,81 @@ export default class ChooseYourPokemon extends Component {
   }
 
    async componentDidMount(){
+     
      await this.fetchData();
    }
 
+   /*FETCH DATA */
    async fetchData(){
+    
+    await this.props.loadUserInformation();
+    
     await this.RandomNumber();
 
      const number = this.state.numberIdPokemon;
-     const pokemon = await singlePokemon({number});
+
+     /*WILL VERIFY IF THE USERS ALREADY HAVE THE MAX */
      
-     await this.triggerUpdateUsersForScore();
+      const pokemon = await singlePokemon({number});
+      this.setState({pokemon});
+     
     
-     this.setState({pokemon});
+     /*after add some pokemon will refresh the pokemon*/
+     await this.triggerUpdateUsersForScore();
+     
    }
 
    async RandomNumber(){
+    /*RANDOM NUMBER FUNCTION*/
      const randomNumber = Math.floor(Math.random() * (125 - 1)) + 1;
      this.setState({
       numberIdPokemon:randomNumber
       });
    }
 
-   triggerUpdatePokemon(){
-     this.fetchData();
+   async triggerUpdatePokemon(originPokeball){
+    
+    if(!originPokeball){
+
+      this.setState(previousState => ({
+        counterRandom: this.props.user.counterRandom+1
+      }));
+
+      const counterRandom = this.state.counterRandom;
+      console.log('counterRandom',counterRandom);
+
+      const id = this.props.user._id;
+      if(counterRandom > 2){
+        await this.addPokemon();
+      }
+      await editUserCounters({id, counterRandom})
+    }
+      
+    await this.fetchData();
    }
 
-   async triggerUpdateUsersForScore(){
+  async triggerUpdateUsersForScore(){
     const users = await UserAll();
     this.setState({users});
-   }
+  }
 
-   async addPokemon(){
-    await editUser(this.props.user._id,this.state.pokemon.name);
-   }
+  async addPokemon(){
+    console.log('his.props.user.pokemons.length',this.props.user.pokemons.length < 3);
+
+    if(this.props.user.pokemons.length < 3){
+      console.log('this.props.user._id',this.props.user._id);
+      console.log('this.state.pokemon.name',this.state.pokemon.name);
+      const id = this.props.user._id;
+      const pokemon = this.state.pokemon.name;
+      await editUser({id,pokemon});
+      const originPokeball = true;
+      this.triggerUpdatePokemon(originPokeball);
+    }
+    
+  }
 
   render() {
-
+    const originPokeball = false;
     
     return (
       <div>
@@ -98,12 +143,14 @@ export default class ChooseYourPokemon extends Component {
             <h2>Stats: </h2>
             <Stats pokemon={this.state.pokemon} />
 
-            <button onClick={this.triggerUpdatePokemon}>
-              Random pokemon
-            </button>
+
+            <Button variant="primary" onClick={() => this.triggerUpdatePokemon(originPokeball)}>Random pokemon</Button>
 
             <button onClick={this.addPokemon}>
-              <img src="./../images/pokeball.svg" alt="pokeball" />
+            
+            <img 
+              src="./../images/pokeball.svg"
+              alt="pokeball" />
             </button>
             
           </div>
