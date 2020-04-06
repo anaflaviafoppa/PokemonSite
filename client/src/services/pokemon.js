@@ -7,9 +7,13 @@ const instance = axios.create({
 
 
 //Service for random single Pokemon:
-const single = async id => {
+const single = async data => {
+  const number = data.number;
+  
   try{
-    const pokemon = await instance.get(`/${id}`);
+    const dataPokemon = await instance.get(`/single/${number}`);
+    const pokemon = dataPokemon.data;
+   
     return pokemon;
   }catch (error) {
     throw error;
