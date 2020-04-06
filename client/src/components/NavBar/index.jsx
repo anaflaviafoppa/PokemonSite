@@ -2,26 +2,35 @@
 
 import React, { Component, Fragment } from 'react';
 
+/*PROFILE BUTTONS AND COMPONENTS*/
 import NavBarProfile from './../NavBarProfile';
 import NavBarProfileButton from './../NavBarProfileButton';
 
-import './style.scss';
-// import { loadUserInformation } from './../../services/authentication';
+/*SCORE BUTTONS AND COMPONENTS*/
+import NavBarScoreButton from './../NavBarScoreButton';
+import NavBarScore from './../NavBarScore';
 
-// import { Swipeable } from 'react-swipeable';
+import './style.scss';
+
 
 class Navbar extends Component {
   constructor(props, context) {
     super(props, context);
     this.state = {
       visibleProfile: false,
+      visibleScore: false,
       sidebarProfile: false,
+      sidebarScore: false,
     };
 
     
     this.handleMouseDownProfile = this.handleMouseDownProfile.bind(this);
     this.toggleMenuProfile = this.toggleMenuProfile.bind(this);
     this.toggleSwipeProfile = this.toggleSwipeProfile.bind(this);
+
+    this.handleMouseDownScore = this.handleMouseDownScore.bind(this);
+    this.toggleMenuScore = this.toggleMenuScore.bind(this);
+    this.toggleSwipeScore = this.toggleSwipeScore.bind(this);
   }
   
   //for the profile Menu
@@ -41,6 +50,23 @@ class Navbar extends Component {
     });
   }
 
+  //for the Score Menu:
+
+  handleMouseDownScore() {
+    this.toggleMenuScore();
+  }
+
+  toggleMenuScore() {
+    this.setState({
+      visibleScore: !this.state.visibleScore
+    });
+  }
+
+  toggleSwipeScore() {
+    this.setState({
+      sidebarScore: !this.state.sidebarScore
+    });
+  }
 
 
   render() {
@@ -48,6 +74,18 @@ class Navbar extends Component {
     return (
       <nav className="nav-style">
         
+        <NavBarScoreButton
+          user={this.props.user}
+          handleMouseDownScore={this.handleMouseDownScore}
+        />
+
+        <NavBarScore
+          user={this.props.user}
+          handleMouseDownScore={this.handleMouseDownScore}
+          menuVisibility={this.state.visibleScore}
+          updateUserInformation={this.props.updateUserInformation}
+        />
+
         <NavBarProfile
           user={this.props.user}
           handleMouseDownProfile={this.handleMouseDownProfile}
@@ -59,6 +97,9 @@ class Navbar extends Component {
           user={this.props.user}
           handleMouseDownProfile={this.handleMouseDownProfile}
         />
+
+
+        
       </nav>
     );
   }

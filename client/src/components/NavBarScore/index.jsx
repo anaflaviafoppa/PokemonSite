@@ -5,9 +5,13 @@ import { signOut } from './../../services/authentication';
 import { useSwipeable, Swipeable } from 'react-swipeable';
 import { Link } from 'react-router-dom';
 
-class NavBarProfile extends Component {
+class NavBarScore extends Component {
   constructor(props) {
     super(props);
+    this.state={
+      users:[]
+    };
+
     this.handleSignOut = this.handleSignOut.bind(this);
   }
 
@@ -29,10 +33,9 @@ class NavBarProfile extends Component {
     }
 
     return (
-      <Swipeable onSwipedRight={this.props.handleMouseDownProfile}>
+      <Swipeable onSwipedLeft={this.props.handleMouseDownProfile}>
         <div id="flyoutSidebarProfile" className={visibility}>
-          <Link to="/home" onMouseDown={this.props.handleMouseDownProfile}>
-         
+          <Link to="/" onMouseDown={this.props.handleMouseDownProfile}>
             <img
               style={{
                 width: '2em',
@@ -40,7 +43,7 @@ class NavBarProfile extends Component {
                 position: 'relative',
                 margin: '2em 1em'
               }}
-              src="./../images/right-white.svg"
+              src="./../images/left-white.svg"
               alt="go back icon"
             />
           </Link>
@@ -89,4 +92,4 @@ class NavBarProfile extends Component {
   }
 }
 
-export default NavBarProfile;
+export default NavBarScore;
