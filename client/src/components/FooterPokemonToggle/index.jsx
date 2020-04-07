@@ -6,19 +6,12 @@ import { Swipeable } from 'react-swipeable';
 class FooterPokemonToggle extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      approvedUsers: [],
-      approvedUsersOrganized:[]
-    };
-
-  
+    
   }
 
-  
-
   render() {
-   
     
+
     var visibility = 'hide';
     if (this.props.menuVisibility) {
       visibility = 'show';
@@ -27,10 +20,13 @@ class FooterPokemonToggle extends Component {
     return (
       <Swipeable onSwipedDown={this.props.handleMouseUp}>
         <div id="flyoutMenu_ViewScores" className={visibility}>
-        <a onMouseUp={this.props.handleMouseUp}>
+          <a onMouseUp={this.props.handleMouseUp}>
             {' '}
             <img className="down-icon" src="./../images/down-white.svg" alt="go down icon" />
           </a>
+
+          <h3>{this.props.name}</h3>
+
           
    
         </div>

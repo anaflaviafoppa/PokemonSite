@@ -2,7 +2,7 @@ $darkColor: #3f3d56;
 $purple: #6c63ff;
 $lightGrey: #e2e2e2;
 
-#flyoutMenu_AddTask {
+#flyoutMenu_Pokemon {
   width: 100%;
   height: 100%;
   background-color: white;
@@ -16,35 +16,7 @@ $lightGrey: #e2e2e2;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  .addTask__form {
-    display: flex;
-    width: 100%;
-    form {
-      width: 100%;
-    }
-    .addTask_form__frequency {
-      margin: 1em auto;
-      display: flex;
-      flex-direction: column;
-   
-      .input_frequency {
-        border: $purple 1px solid;
-        border-radius: 2em;
-        color: $darkColor;
-        font-size: 0.9em;
-        padding: 0.3em 1em;
-        margin: 0.5em 0;
-
-      }
-    }
-    .addTask_form__item {
-      margin: 1em auto;
-      display: flex;
-      span {
-        font-size: 1em !important;
-      }
-    }
-  }
+  
   h2 {
     color: $purple;
     font-size: 1.5em;
@@ -52,8 +24,8 @@ $lightGrey: #e2e2e2;
     margin-top: 1em;
   }
   img {
-    width: 2em;
-    float: right;
+    width: 12em;
+    float: left;
     margin: 2em 1em;
   }
   .input {
@@ -120,16 +92,16 @@ $lightGrey: #e2e2e2;
   }
 }
 
-#flyoutMenu_AddTask.hide {
+#flyoutMenu_Pokemon.hide {
   transform: translate3d(100vw, 0, 0);
 }
 
-#flyoutMenu_AddTask.show {
+#flyoutMenu_Pokemon.show {
   transform: translate3d(-0vw, 0, 0);
   overflow: hidden auto;
 }
 
-#flyoutMenu_AddTask h2 a {
+#flyoutMenu_Pokemon h2 a {
   color: white;
   margin-left: 0;
   text-decoration: none;

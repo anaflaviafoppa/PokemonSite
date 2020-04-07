@@ -33,6 +33,7 @@ export default class ChooseYourPokemon extends Component {
     this.triggerUpdatePokemon=this.triggerUpdatePokemon.bind(this);
     this.triggerUpdateUsersForScore=this.triggerUpdateUsersForScore.bind(this);
     this.addPokemon=this.addPokemon.bind(this);
+    this.triggerPokemon=this.triggerPokemon.bind(this);
   }
 
    async componentDidMount(){
@@ -50,14 +51,24 @@ export default class ChooseYourPokemon extends Component {
      const number = this.state.numberIdPokemon;
 
      /*WILL VERIFY IF THE USERS ALREADY HAVE THE MAX */
+     const pokemon = await this.triggerPokemon(number);
      
-      const pokemon = await singlePokemon({number});
-      this.setState({pokemon});
+     this.setState({pokemon});
+      
      
     
      /*after add some pokemon will refresh the pokemon*/
      await this.triggerUpdateUsersForScore();
      
+   }
+
+   async triggerPokemon(number){
+     
+      const pokemon = await singlePokemon({number});
+      console.log('triggerPokemon');
+      return pokemon;
+      
+      
    }
 
    async RandomNumber(){
@@ -95,11 +106,9 @@ export default class ChooseYourPokemon extends Component {
   }
 
   async addPokemon(){
-    console.log('his.props.user.pokemons.length',this.props.user.pokemons.length < 3);
-
+    
     if(this.props.user.pokemons.length < 3){
-      console.log('this.props.user._id',this.props.user._id);
-      console.log('this.state.pokemon.name',this.state.pokemon.name);
+      
       const id = this.props.user._id;
       const pokemon = this.state.pokemon.name;
       await editUser({id,pokemon});
@@ -145,7 +154,10 @@ export default class ChooseYourPokemon extends Component {
             <Stats pokemon={this.state.pokemon} />
 
 
-            <Button variant="primary" onClick={() => this.triggerUpdatePokemon(originPokeball)}>Random pokemon</Button>
+            <Button variant="primary" 
+            onClick={() => this.triggerUpdatePokemon(originPokeball)}>
+              Random pokemon
+            </Button>
 
             <button onClick={this.addPokemon}>
             
@@ -155,7 +167,11 @@ export default class ChooseYourPokemon extends Component {
             </button>
             
 
-            <FooterHome />
+            <FooterHome
+              loadUserInformation={this.props.loadUserInformation}
+              user={this.props.user}
+              
+            />
           </div>
         }
       </div>

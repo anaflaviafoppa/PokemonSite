@@ -32,7 +32,20 @@ const schema = new mongoose.Schema({
        timesPlayed: {
           type: Number,
           default:0 
-       }
+       },
+       picture:{
+         type: String
+       },
+       statsNumber:[
+         {
+           type:Number
+         }
+       ],
+       abilities:[
+         {
+           type:String
+         }
+       ]
      }
   ],
   counterRandom:{

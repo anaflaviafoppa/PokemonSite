@@ -1,0 +1,110 @@
+$darkColor: #3f3d56;
+$purple: #6c63ff;
+$lightGrey: #e2e2e2;
+
+small {
+  color: white;
+}
+
+#flyoutMenu_ViewScores {
+  width: 100%;
+  height: calc(100% - 3.5em);
+  background-color: #3f3d56fa;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  transition: transform 0.3s cubic-bezier(0, 0.52, 0, 1);
+  overflow: scroll;
+  z-index: 1000;
+  color: #3f3d56;
+  display: flex;
+  flex-direction: column;
+
+  .users__scores__list {
+    margin: 1em auto;
+    max-width: 90%;
+    min-width: 80%;
+    list-style: none;
+    counter-reset: item;
+
+    .userScore_Single {
+      background-color: #6b63ff4b;
+      color: white;
+      font-size: 1.4em;
+      font-size: 100;
+      border-radius: 0.5em;
+      text-align: left;
+      padding: 0.5em 1em;
+      counter-increment: item;
+      margin-bottom: 0.4em;
+      display: flex;
+      align-content: center;
+      justify-content: flex-start;
+      .scores_name {
+        margin-left: auto;
+      }
+      &:first-child {
+        background-color: #6b63ff9f;
+      }
+      &:before {
+        content: counter(item);
+        background: #3f3d5633;
+        border-radius: 50%;
+        color: white;
+        width: 1.4em;
+        height: 1.4em;
+        text-align: center;
+        display: inline-block;
+      }
+      .scores_picture {
+        .picture__scores {
+          float: left;
+          width: 1.8em;
+          height: 1.8em;
+          border-radius: 50%;
+          margin: 0 0.8em;
+          object-fit: cover;
+        }
+      }
+
+      h5 {
+        margin-right: 0.5em;
+        font-size: 1em;
+        font-weight: 200;
+        color: white;
+        display: inline-block;
+      }
+    }
+  }
+
+  .down-icon {
+    width: 2em;
+    left: 45%;
+    margin-top: 1em;
+  }
+
+  h3 {
+    color: white;
+    font-weight: 200;
+    font-size: 1.4em;
+    margin: 1em 0 0 0;
+  }
+  li {
+    color: white;
+  }
+}
+
+#flyoutMenu_ViewScores.hide {
+  transform: translate(0, 100%);
+}
+
+#flyoutMenu_ViewScores.show {
+  transform: translate(0, 0);
+  overflow: hidden auto;
+}
+
+#flyoutMenu_ViewScores h2 a {
+  color: white;
+  margin-left: 0;
+  text-decoration: none;
+}

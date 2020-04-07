@@ -15,6 +15,8 @@ router.get('/single/:number',routeGuard, (req, res, next) => {
 
   //Params to request the API
   const number = req.params.number;
+  
+
   const Pokemon = axios.get(`https://pokeapi.co/api/v2/pokemon/${number}`);
 
   Pokemon
@@ -30,14 +32,27 @@ router.get('/single/:number',routeGuard, (req, res, next) => {
 
 
 /*Adicionar o Pokemon */
-router.put('/edituser/:id/:pokemon', (req, res, next) => {
+router.put('/edituser/:id/:pokemon', async (req, res, next) => {
   const pokemon = req.params.pokemon;
+  console.log(pokemon);
+  const pokemonData = await axios.get(`https://pokeapi.co/api/v2/pokemon/${pokemon}`);
+  const pokemonAll = pokemonData.data;
+  console.log(pokemonAll);
+  const picture = pokemonAll.sprites.front_default;
+  const statsNumber = pokemonAll.stats.map( stat => stat.base_stat);
+  const abilities = pokemonAll.abilities.map( ability => ability.ability.name);
+
+  
+  
+  
+  //const statsName = pokemonAll.stats.map( stat => stat.stat.name);
+  
 
   User.findByIdAndUpdate(
     req.params.id,
     {
       $push: { 
-        pokemons: {pokemon} 
+        pokemons: {pokemon,picture,statsNumber,abilities} 
       }
     },
     { new: true }

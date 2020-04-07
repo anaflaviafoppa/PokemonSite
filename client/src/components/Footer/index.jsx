@@ -1,9 +1,8 @@
 // components/navbar/Navbar.js
 
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import FooterBattle from '../FooterBattle';
 import FooterBattleButton from '../FooterBattleButton';
-import FooterPokemonToggle from '../FooterPokemonToggle';
 import FooterPokemonButton from '../FooterPokemonButton';
 
 import './style.scss';
@@ -38,6 +37,7 @@ class FooterHome extends Component {
       visibleBattle: !this.state.visibleBattle
     });
   }
+
   toggleSwipeBattle() {
     this.setState({
       sidebarBattle: !this.state.sidebarBattle
@@ -62,19 +62,27 @@ class FooterHome extends Component {
 
   
   render() {
-    
+   
     return (
       <footer className="footer-style">
-        <FooterPokemonButton
-          handleMouseUp={this.handleMouseUpViewPokemon}
-          menuVisibility={this.state.visibleViewPokemon}
-        />
-        <FooterPokemonToggle
-          handleMouseUp={this.handleMouseUpViewPokemon}
-          menuVisibility={this.state.visibleViewPokemon}
-        />
 
+      { this.props.user.pokemons.map( pokemon => 
+        <Fragment  key={pokemon.pokemon}>
+          <FooterPokemonButton
+            name={pokemon.pokemon}
+            handleMouseUp={this.handleMouseUpViewPokemon}
+            menuVisibility={this.state.visibleViewPokemon}
+            handleMouseUp={this.handleMouseUpViewPokemon}
+            menuVisibility={this.state.visibleViewPokemon}
+          />
+
+         
+        </Fragment>
+      )}
+
+       
         <FooterBattle
+          user={this.props.user}
           handleMouseUp={this.handleMouseUpBattle}
           menuVisibility={this.state.visibleBattle}
         />
