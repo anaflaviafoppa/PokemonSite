@@ -109,6 +109,7 @@ export default class App extends Component {
                     {...props}
                     user={this.state.user}
                     updateUserInformation={this.updateUserInformation}
+                    loadUserInformation={this.loadUserInformation}
                   />
                 )}
               />

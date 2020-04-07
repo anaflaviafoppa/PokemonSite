@@ -20,44 +20,61 @@ const single = async data => {
   }
 };
 
+/*SERVICE FOR PUSH*/
+
 const editUser = async (data) => {
   const id = data.id;
   const pokemon = data.pokemon;
-  
+  const score=data.score;
+  const timesPlayed = data.timesPlayed;
+  const counterRandom = data.counterRandom;
 
   
     try{
-      await instance.put(`/edituser/${id}/${pokemon}`); 
+      await instance.put(`/editUserPush/${id}`,{ pokemon, score, timesPlayed, counterRandom }); 
     }catch (error) {
       throw error;
     }
   
 }
 
-const editUserCounters = async (data) => {
+/*SERVICE FOR PULL*/
+const editUserPull = async (data) => {
+  const id = data.id;
+  const pokemon = data.pokemon;
+  console.log(pokemon);
+
+    try{
+      await instance.put(`/editUserPull/${id}`,{ pokemon }); 
+    }catch (error) {
+      throw error;
+    }
+  
+}
+
+const editUserCounter = async (data) => {
   const id = data.id;
   const counterRandom = data.counterRandom;
   
-
-  try{
-    await instance.put(`/editUserCounters/${id}/${counterRandom}`); 
-  }catch (error) {
-    throw error;
-  }
-}
-
-
-const editUserPoints = async (data) => {
-  const id = data.id;
-  const counterRandom = data.counterRandom;
-  const points=data.points;
+    try{
+      await instance.put(`/editUserCounter/${id}`,{ counterRandom }); 
+    }catch (error) {
+      throw error;
+    }
   
-
-  try{
-    await instance.put(`/editUser/${id}/`, {counterRandom,points}); 
-  }catch (error) {
-    throw error;
-  }
 }
 
-export { single, editUser, editUserCounters, editUserPoints };
+
+const singleUser = async (data) => {
+  const id = data.id;
+    try{
+      const user = await instance.get(`/singleUser/${id}`); 
+      return user;
+    }catch (error) {
+      throw error;
+    }
+}
+
+
+
+export { single, editUser, singleUser, editUserPull, editUserCounter };

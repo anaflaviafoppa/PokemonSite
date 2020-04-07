@@ -32,27 +32,71 @@ router.get('/single/:number',routeGuard, (req, res, next) => {
 
 
 /*Adicionar o Pokemon */
-router.put('/edituser/:id/:pokemon', async (req, res, next) => {
-  const pokemon = req.params.pokemon;
-  console.log(pokemon);
+router.put('/edituserPush/:id', async (req, res, next) => {
+  const pokemon = req.body.pokemon;
+  const counterRandom = req.body.counterRandom;
+  const score= req.body.score;
+  const timesPlayed = req.body.timesPlayed;
+
+  
+
   const pokemonData = await axios.get(`https://pokeapi.co/api/v2/pokemon/${pokemon}`);
   const pokemonAll = pokemonData.data;
-  console.log(pokemonAll);
+  
+    
   const picture = pokemonAll.sprites.front_default;
   const statsNumber = pokemonAll.stats.map( stat => stat.base_stat);
   const abilities = pokemonAll.abilities.map( ability => ability.ability.name);
-
   
   
-  
-  //const statsName = pokemonAll.stats.map( stat => stat.stat.name);
-  
-
   User.findByIdAndUpdate(
     req.params.id,
     {
       $push: { 
-        pokemons: {pokemon,picture,statsNumber,abilities} 
+        pokemons: {pokemon,picture,statsNumber,abilities, timesPlayed} 
+      }, counterRandom, score
+    },
+    { new: true }
+  )
+    .then(user => {
+      res.json(user);
+    })
+    .catch(error => {
+      res.json(error);
+    });
+});
+
+/*Alterar APenas counter */
+router.put('/edituserCounter/:id', async (req, res, next) => {
+  
+  const counterRandom = req.body.counterRandom;
+ 
+  
+  User.findByIdAndUpdate(
+    req.params.id,
+    {
+      counterRandom
+    },
+    { new: true }
+  )
+    .then(user => {
+      res.json(user);
+    })
+    .catch(error => {
+      res.json(error);
+    });
+});
+
+
+/*Retirar o Pokemon Antigo*/
+router.put('/editUserPull/:id', async (req, res, next) => {
+  const pokemon = req.body.pokemon;
+ 
+  User.findByIdAndUpdate(
+    req.params.id,
+    {
+      $pull: { 
+        pokemons: {pokemon} 
       }
     },
     { new: true }
@@ -66,14 +110,11 @@ router.put('/edituser/:id/:pokemon', async (req, res, next) => {
 });
 
 
-router.put('/editUserCounters/:id/:counterRandom', (req, res, next) => {
-  const counterRandom = req.params.counterRandom;
-  
-
-  User.findByIdAndUpdate(
-    req.params.id,
-    {counterRandom},
-    { new: true }
+/*SINGLE USER*/
+router.get('/singleUser/:id', async (req, res, next) => {
+ 
+  User.findById(
+    req.params.id
   )
     .then(user => {
       res.json(user);
@@ -82,6 +123,8 @@ router.put('/editUserCounters/:id/:counterRandom', (req, res, next) => {
       res.json(error);
     });
 });
+
+
 
 
 

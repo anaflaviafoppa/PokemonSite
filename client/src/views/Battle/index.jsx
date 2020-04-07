@@ -8,7 +8,7 @@ import RandomPokemon from './../../components/RandomPokemon';
 /*Services*/
 import {single as singlePokemon} from '../../services/pokemon';
 import {editUser} from '../../services/pokemon';
-import {editUserCounters} from '../../services/pokemon';
+import { editUserPull } from '../../services/pokemon';
 import UserAll from './../../services/userall';
 
 
@@ -77,36 +77,53 @@ async triggerUpdateUsersForScore(){
 
 /*COMPARE VALUES*/
 async competitionValue(nameOfAbility, userValue){
-  let points;
-  switch (nameOfAbility) {
-    case 'speed':
-      points=8;
-      break;
-    case 'special-defense':
-      points=15;
-      break;
-    case 'special-attack':
-      points=18;
-      break;
-    case 'defense':
-      points=12;
-      break;
-    default:
-      points=10;
-      break;
-  }
 
-  const pokemon = this.state.pokemon;
-  const valueEnemy = pokemon.stats.find( element => element.stat.name === nameOfAbility );
+  let score = this.props.user.score;
+  console.log('score ANTES', score);
 
-  if(valueEnemy.base_stat > userValue){
-   //'ENEMY WINS'
+  const pokemon = this.state.pokemonUser.pokemon;
+  const counterRandom = this.props.user.counterRandom;
+  console.log('counterRandom',counterRandom);
+  
+  const id = this.props.user._id;
+  let timesPlayed = this.state.pokemonUser.timesPlayed;
+
+  await editUserPull({id, pokemon});
+
+  timesPlayed++;
+
+  const pokemonEnemy = this.state.pokemon;
+  const valueEnemy = pokemonEnemy.stats.find( element => element.stat.name === nameOfAbility );
+  console.log('valueEnemy',valueEnemy);
+
+  if(valueEnemy.base_stat >= userValue){
+    //'ENEMY WINS'
+    await editUser({id, score, pokemon, timesPlayed, counterRandom});
 
   }else if(valueEnemy.base_stat < userValue){
     //'USER WINS'
-    await editUser
-  }else{
-    //'DRAW'
+    switch (nameOfAbility) {
+      case 'speed':
+        score += 8;
+        break;
+      case 'special-defense':
+        score += 15;
+        break;
+      case 'special-attack':
+        score += 18;
+        break;
+      case 'defense':
+        score += 12;
+        break;
+      default:
+        score += 10;
+        break;
+    }
+
+    console.log('score',score);
+
+    await editUser({id, score, pokemon, timesPlayed, counterRandom});
+
   }
 }
 

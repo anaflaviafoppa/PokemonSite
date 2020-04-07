@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 
 /*Packages*/
 import { Button } from 'react-bootstrap';
@@ -7,7 +7,7 @@ import { Button } from 'react-bootstrap';
 /*Services*/
 import {single as singlePokemon} from '../../services/pokemon';
 import {editUser} from '../../services/pokemon';
-import {editUserCounters} from '../../services/pokemon';
+import {editUserCounter} from '../../services/pokemon';
 import UserAll from './../../services/userall';
 
 
@@ -81,19 +81,20 @@ export default class ChooseYourPokemon extends Component {
    async triggerUpdatePokemon(originPokeball){
     
     if(!originPokeball){
+      await this.props.loadUserInformation();
 
-      this.setState(previousState => ({
-        counterRandom: this.props.user.counterRandom+1
-      }));
-
-      const counterRandom = this.state.counterRandom;
-      console.log('counterRandom',counterRandom);
-
+      const counterRandom = this.props.user.counterRandom+1;
       const id = this.props.user._id;
+
+      await editUserCounter({id, counterRandom});
+
+
       if(counterRandom > 2){
         await this.addPokemon();
       }
-      await editUserCounters({id, counterRandom})
+      
+
+      
     }
       
     await this.fetchData();
@@ -107,10 +108,14 @@ export default class ChooseYourPokemon extends Component {
   async addPokemon(){
     
     if(this.props.user.pokemons.length < 3){
-      
+      const score = this.props.user.score;
+      const counterRandom = this.props.user.counterRandom;
       const id = this.props.user._id;
       const pokemon = this.state.pokemon.name;
-      await editUser({id,pokemon});
+
+      await editUser({id,pokemon, score, counterRandom});
+
+
       const originPokeball = true;
       this.triggerUpdatePokemon(originPokeball);
     }
@@ -134,18 +139,22 @@ export default class ChooseYourPokemon extends Component {
           <div>
 
             <RandomPokemon battle={false} pokemon={this.state.pokemon} />
-
-            <Button variant="primary" 
-            onClick={() => this.triggerUpdatePokemon(originPokeball)}>
-              Random pokemon
-            </Button>
-
-            <button onClick={this.addPokemon}>
             
-            <img 
-              src="./../images/pokeball.svg"
-              alt="pokeball" />
-            </button>
+            { this.props.user.pokemons.length < 3 &&
+            <Fragment>
+              <Button variant="primary" 
+              onClick={() => this.triggerUpdatePokemon(originPokeball)}>
+                Random pokemon
+              </Button>
+
+              <Button onClick={this.addPokemon}>
+              
+              <img 
+                src="./../images/pokeball.svg"
+                alt="pokeball" />
+              </Button>
+            </Fragment>
+            }
             
 
             <FooterHome
