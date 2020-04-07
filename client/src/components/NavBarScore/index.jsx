@@ -23,7 +23,7 @@ class NavBarScore extends Component {
     return (
       <Swipeable onSwipedLeft={this.props.handleMouseDownScore}>
         <div id="flyoutMenu" className={visibility}>
-          <Link to="/" onMouseDown={this.props.handleMouseDownScore}>
+          <Link to={this.props.redirectPage} onMouseDown={this.props.handleMouseDownScore}>
             <img
               style={{
                 width: '2em',

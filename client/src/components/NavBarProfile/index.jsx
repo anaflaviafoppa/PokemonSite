@@ -31,7 +31,7 @@ class NavBarProfile extends Component {
     return (
       <Swipeable onSwipedRight={this.props.handleMouseDownProfile}>
         <div id="flyoutSidebarProfile" className={visibility}>
-          <Link to="/home" onMouseDown={this.props.handleMouseDownProfile}>
+          <Link to={this.props.redirectPage} onMouseDown={this.props.handleMouseDownProfile}>
          
             <img
               style={{

@@ -139,6 +139,7 @@ async competitionValue(nameOfAbility, userValue){
           {...this.props}
           updateUserInformation={this.props.updateUserInformation}
           updateUsersScore={this.triggerUpdateUsersForScore}
+          redirectPage={'/battle'}
         />
         { this.state.pokemon !== '' &&
         <section>

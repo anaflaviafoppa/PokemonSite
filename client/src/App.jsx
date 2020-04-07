@@ -57,6 +57,16 @@ export default class App extends Component {
   }
 
   render() {
+    const existUser = this.state.user !== null;
+    let existUserPokemonsLength;
+
+    if(existUser){
+      existUserPokemonsLength = this.state.user.pokemons.length === 3;
+    } else{
+      existUserPokemonsLength = false;
+    }
+
+   
     return (
       <div>
         {this.state.loaded && (<BrowserRouter>
@@ -65,15 +75,16 @@ export default class App extends Component {
           path="/"
           exact
           authorized={!this.state.user}
-          redirect={'/home'}
+          redirect={existUserPokemonsLength ? '/pokemons' : '/home'}
+          redirectPage={existUserPokemonsLength ? '/pokemons' : '/home'}
           render={props => (
-                  <SignInSignOut {...props} updateUserInformation={this.updateUserInformation} />)}
+            <SignInSignOut {...props} updateUserInformation={this.updateUserInformation} />)}
           />
 
           <ProtectedRoute
             path="/home"
             authorized={this.state.user}
-            
+            redirect={'/'}
             exact
             render={props => (
               <Home
@@ -90,12 +101,13 @@ export default class App extends Component {
                 path="/edit"
                 exact
                 authorized={this.state.user}
-                redirect={'/home'}
+                redirect={existUserPokemonsLength ? '/pokemons' : '/home'}
                 render={props => (
                   <EditProfileView
                     {...props}
                     user={this.state.user}
                     updateUserInformation={this.updateUserInformation}
+                    redirectPage={existUserPokemonsLength ? '/pokemons' : '/home'}
                   />
                 )}
               />
@@ -104,7 +116,7 @@ export default class App extends Component {
                 path="/battle"
                 exact
                 authorized={this.state.user}
-               
+                redirect={'/'}
                 render={props => (
                   <Battle
                     {...props}
@@ -119,7 +131,7 @@ export default class App extends Component {
                 path="/pokemons"
                 exact
                 authorized={this.state.user}
-               
+                redirect={'/'}
                 render={props => (
                   <Pokemons
                     {...props}

@@ -50,6 +50,7 @@ export default class Pokemons extends Component {
           {...this.props}
           updateUserInformation={this.props.updateUserInformation}
           updateUsersScore={this.triggerUpdateUsersForScore}
+          redirectPage={'/pokemons'}
         />
 
       <section>

@@ -38,7 +38,7 @@ class EditProfileView extends Component {
         picture
       });
       this.props.updateUserInformation(user);
-      this.props.history.push('/home');
+      this.props.history.push(this.props.redirectPage);
     } catch (error) {
       console.log(error);
     }
@@ -63,7 +63,7 @@ class EditProfileView extends Component {
     const user = this.props.user;
     return (
       <div className="edit__profile">
-        <Link to="/home">
+        <Link to={this.props.redirectPage}>
           <img className="exit-icon" src="./../../images/close.svg" alt="close icon" />
         </Link>
         <h1>Edit Your Profile</h1>

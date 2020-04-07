@@ -24,7 +24,7 @@ class SignInSignOut extends Component {
   }
 
   changeHistory() {
-    this.props.history.push('/home');
+    this.props.history.push(this.props.redirectPage);
   }
 
   render() {
