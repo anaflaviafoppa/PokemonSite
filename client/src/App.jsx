@@ -14,6 +14,7 @@ import Home from './views/ChooseYourPokemon';
 import SignInSignOut from './views/SignInSingOut';
 import EditProfileView from './views/editProfile';
 import Battle from './views/Battle';
+import Pokemons from './views/Pokemons';
 
 
 export default class App extends Component {
@@ -72,7 +73,7 @@ export default class App extends Component {
           <ProtectedRoute
             path="/home"
             authorized={this.state.user}
-            redirect={'/'}
+            
             exact
             render={props => (
               <Home
@@ -106,6 +107,21 @@ export default class App extends Component {
                
                 render={props => (
                   <Battle
+                    {...props}
+                    user={this.state.user}
+                    updateUserInformation={this.updateUserInformation}
+                    loadUserInformation={this.loadUserInformation}
+                  />
+                )}
+              />
+
+              <ProtectedRoute
+                path="/pokemons"
+                exact
+                authorized={this.state.user}
+               
+                render={props => (
+                  <Pokemons
                     {...props}
                     user={this.state.user}
                     updateUserInformation={this.updateUserInformation}

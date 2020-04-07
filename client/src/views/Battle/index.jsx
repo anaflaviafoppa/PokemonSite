@@ -125,6 +125,8 @@ async competitionValue(nameOfAbility, userValue){
     await editUser({id, score, pokemon, timesPlayed, counterRandom});
 
   }
+
+  this.props.history.push('/pokemons');
 }
 
   render() {
@@ -142,7 +144,7 @@ async competitionValue(nameOfAbility, userValue){
         <section>
           <div className="row">
             <div className="col">
-              <ColumnBattle pokemon={this.state.pokemonUser} competitionValue={this.competitionValue}/>
+              <ColumnBattle battle={true} pokemon={this.state.pokemonUser} competitionValue={this.competitionValue}/>
             </div>
 
             <div className="col">
