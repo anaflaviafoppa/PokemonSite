@@ -12,10 +12,9 @@ import UserAll from './../../services/userall';
 
 
 /*COMPONENTS*/
-import SpritesPokemon from '../../components/spritesPokemon';
 import NavBar from './../../components/NavBar';
-import Stats from './../../components/Stats';
 import FooterHome from './../../components/Footer';
+import RandomPokemon from './../../components/RandomPokemon';
 
 
 
@@ -73,7 +72,7 @@ export default class ChooseYourPokemon extends Component {
 
    async RandomNumber(){
     /*RANDOM NUMBER FUNCTION*/
-     const randomNumber = Math.floor(Math.random() * (125 - 1)) + 1;
+     const randomNumber = Math.floor(Math.random() * (500 - 1)) + 1;
      this.setState({
       numberIdPokemon:randomNumber
       });
@@ -134,25 +133,7 @@ export default class ChooseYourPokemon extends Component {
         {this.state.pokemon !== '' &&
           <div>
 
-            <h1>{this.state.pokemon.name}</h1>
-            
-            <SpritesPokemon 
-              name={this.state.pokemon.name}
-              src={this.state.pokemon.sprites.front_default} />
-
-            <h2>Abilities:</h2>
-            <ul>
-              {this.state.pokemon.abilities.map( ability => 
-              <li key={ability.ability.name}>{ability.ability.name}</li>
-              )}
-            </ul>
-
-            <h2>Type:</h2>
-            <p>{this.state.pokemon.types[0].type.name}</p>
-
-            <h2>Stats: </h2>
-            <Stats pokemon={this.state.pokemon} />
-
+            <RandomPokemon battle={false} pokemon={this.state.pokemon} />
 
             <Button variant="primary" 
             onClick={() => this.triggerUpdatePokemon(originPokeball)}>
@@ -170,7 +151,7 @@ export default class ChooseYourPokemon extends Component {
             <FooterHome
               loadUserInformation={this.props.loadUserInformation}
               user={this.props.user}
-              
+
             />
           </div>
         }

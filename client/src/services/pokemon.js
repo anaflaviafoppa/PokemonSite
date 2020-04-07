@@ -46,4 +46,18 @@ const editUserCounters = async (data) => {
   }
 }
 
-export { single, editUser, editUserCounters };
+
+const editUserPoints = async (data) => {
+  const id = data.id;
+  const counterRandom = data.counterRandom;
+  const points=data.points;
+  
+
+  try{
+    await instance.put(`/editUser/${id}/`, {counterRandom,points}); 
+  }catch (error) {
+    throw error;
+  }
+}
+
+export { single, editUser, editUserCounters, editUserPoints };

@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 
 
 
-class FooterAddTasksToggle extends Component {
+class FooterBattle extends Component {
   constructor(props) {
     super(props);
   }
@@ -31,7 +31,13 @@ class FooterAddTasksToggle extends Component {
        
           {this.props.user.pokemons.map(pokemon =>
             <div key={pokemon.pokemon}>
-            <Link to="/battle">
+            <Link 
+              to={{
+                pathname: '/battle',
+                state: {
+                  pokemonUser: pokemon
+                }
+              }}>
               <h1>{pokemon.pokemon}</h1>
               <img alt={pokemon.pokemon} src={pokemon.picture}></img>
             </Link>
@@ -46,7 +52,7 @@ class FooterAddTasksToggle extends Component {
               <h2>Stats: </h2>
               <ul>
                 {pokemon.statsNumber.map( stat => 
-                <li>{stat}</li>
+                  <li key={Math.random() * Math.floor(stat)}>{stat}</li>
                 )}
               </ul>
             </div>
@@ -58,4 +64,4 @@ class FooterAddTasksToggle extends Component {
   }
 }
 
-export default FooterAddTasksToggle;
+export default FooterBattle;
