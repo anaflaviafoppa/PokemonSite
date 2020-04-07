@@ -13,6 +13,7 @@ import { loadUserInformation } from './services/authentication';
 import Home from './views/ChooseYourPokemon';
 import SignInSignOut from './views/SignInSingOut';
 import EditProfileView from './views/editProfile';
+import Battle from './views/Battle';
 
 
 export default class App extends Component {
@@ -91,6 +92,20 @@ export default class App extends Component {
                 redirect={'/home'}
                 render={props => (
                   <EditProfileView
+                    {...props}
+                    user={this.state.user}
+                    updateUserInformation={this.updateUserInformation}
+                  />
+                )}
+              />
+
+            <ProtectedRoute
+                path="/battle"
+                exact
+                authorized={this.state.user}
+               
+                render={props => (
+                  <Battle
                     {...props}
                     user={this.state.user}
                     updateUserInformation={this.updateUserInformation}

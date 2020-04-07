@@ -1,8 +1,7 @@
 import './style.scss';
 import React, { Component } from 'react';
 import { Swipeable } from 'react-swipeable';
-
-import Stats from '../Stats';
+import { Link } from 'react-router-dom';
 
 
 
@@ -32,8 +31,11 @@ class FooterAddTasksToggle extends Component {
        
           {this.props.user.pokemons.map(pokemon =>
             <div key={pokemon.pokemon}>
+            <Link to="/battle">
               <h1>{pokemon.pokemon}</h1>
               <img alt={pokemon.pokemon} src={pokemon.picture}></img>
+            </Link>
+              
               <h2>Abilities:</h2>
               <ul>
                 {pokemon.abilities.map( ability => 
@@ -44,7 +46,7 @@ class FooterAddTasksToggle extends Component {
               <h2>Stats: </h2>
               <ul>
                 {pokemon.statsNumber.map( stat => 
-                <li key={stat}>{stat}</li>
+                <li>{stat}</li>
                 )}
               </ul>
             </div>
