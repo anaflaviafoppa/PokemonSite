@@ -114,7 +114,8 @@ export default class Pokemons extends Component {
         />
       {this.state.user !== '' &&
       <section>
-        <h1>{this.props.location.state.scoreBefore < this.props.location.state.score ? 'YOU WIN' : 'YOU LOST THE GAME'}</h1>
+      { this.props.location.state.scoreBefore >= 0 &&
+        <h1>{this.props.location.state.scoreBefore < this.props.location.state.score ? 'YOU WIN' : 'YOU LOST THE GAME'}</h1>}
         <h1>Choose your next Pokemon to play:</h1>
 
         <div className="row">

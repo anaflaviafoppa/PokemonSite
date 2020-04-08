@@ -1,11 +1,10 @@
 // components/navbar/Navbar.js
 
 import React, { Component, Fragment } from 'react';
-import FooterBattle from '../FooterBattle';
-import FooterBattleButton from '../FooterBattleButton';
 import FooterPokemonButton from '../FooterPokemonButton';
 
 import './style.scss';
+import { Link } from 'react-router-dom';
 
 
 class FooterHome extends Component {
@@ -70,28 +69,26 @@ class FooterHome extends Component {
         <Fragment  key={pokemon.pokemon}>
           <FooterPokemonButton
             name={pokemon.pokemon}
+            picture={pokemon.picture}
             handleMouseUp={this.handleMouseUpViewPokemon}
             menuVisibility={this.state.visibleViewPokemon}
             handleMouseUp={this.handleMouseUpViewPokemon}
             menuVisibility={this.state.visibleViewPokemon}
           />
 
-         
         </Fragment>
       )}
 
-       
-        <FooterBattle
-          user={this.props.user}
-          handleMouseUp={this.handleMouseUpBattle}
-          menuVisibility={this.state.visibleBattle}
-        />
-        
-        <FooterBattleButton
-          handleMouseUp={this.handleMouseUpBattle}
-          menuVisibility={this.state.visibleBattle}
-          updateUserInformation={this.props.updateUserInformation}
-        />
+       <Link 
+                to={{
+                    pathname: '/pokemons',
+                    state: {
+                     scoreBefore: -1
+                   }
+                }}
+                >
+          <img className="battle-btn" src="./../../../images/add.svg" alt="add" />
+        </Link>
       </footer>
     );
   }

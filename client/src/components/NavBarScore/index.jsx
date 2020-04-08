@@ -39,12 +39,16 @@ class NavBarScore extends Component {
           </Button>
 
           <h1>SCORE:</h1>
+          <ol>
           {this.props.users.map(user => 
             <div key={user._id}>
-              <h2>{user.name}</h2>
-              <h3>{user.score}</h3>
+                <li>
+                  <h2>{user.name}</h2>
+                  <h3>{user.score}</h3>
+                </li>
             </div>
           )}
+          </ol>
         </div>
 
 
