@@ -64,7 +64,7 @@ export default class ChooseYourPokemon extends Component {
    async triggerPokemon(number){
      
       const pokemon = await singlePokemon({number});
-      console.log('triggerPokemon');
+      
       return pokemon;
       
       

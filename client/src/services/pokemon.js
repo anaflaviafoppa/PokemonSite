@@ -30,6 +30,7 @@ const editUser = async (data) => {
   const counterRandom = data.counterRandom;
 
   
+  
     try{
       await instance.put(`/editUserPush/${id}`,{ pokemon, score, timesPlayed, counterRandom }); 
     }catch (error) {
@@ -66,7 +67,8 @@ const editUserCounter = async (data) => {
 
 
 const singleUser = async (data) => {
-  const id = data.id;
+    const id = data.id;
+   
     try{
       const user = await instance.get(`/singleUser/${id}`); 
       return user;

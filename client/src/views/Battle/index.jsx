@@ -19,7 +19,8 @@ export default class Battle extends Component {
       users:[],
       numberIdPokemon:0,
       pokemon:'',
-      pokemonUser:''
+      pokemonUser:'',
+      scoreBefore:0
     }
 
     this.RandomNumber=this.RandomNumber.bind(this);
@@ -79,11 +80,11 @@ async triggerUpdateUsersForScore(){
 async competitionValue(nameOfAbility, userValue){
 
   let score = this.props.user.score;
-  console.log('score ANTES', score);
+  this.setState({scoreBefore:score});
 
   const pokemon = this.state.pokemonUser.pokemon;
   const counterRandom = this.props.user.counterRandom;
-  console.log('counterRandom',counterRandom);
+  
   
   const id = this.props.user._id;
   let timesPlayed = this.state.pokemonUser.timesPlayed;
@@ -94,7 +95,7 @@ async competitionValue(nameOfAbility, userValue){
 
   const pokemonEnemy = this.state.pokemon;
   const valueEnemy = pokemonEnemy.stats.find( element => element.stat.name === nameOfAbility );
-  console.log('valueEnemy',valueEnemy);
+  
 
   if(valueEnemy.base_stat >= userValue){
     //'ENEMY WINS'
@@ -126,7 +127,10 @@ async competitionValue(nameOfAbility, userValue){
 
   }
 
-  this.props.history.push('/pokemons');
+  this.props.history.push({
+    pathname: '/pokemons',
+    state: { scoreBefore: this.state.scoreBefore, score:score, pokemonNameUsed: this.state.pokemonUser.pokemon }
+  })
 }
 
   render() {
@@ -143,9 +147,13 @@ async competitionValue(nameOfAbility, userValue){
         />
         { this.state.pokemon !== '' &&
         <section>
+          <h1>Choose your caract.</h1>
           <div className="row">
             <div className="col">
-              <ColumnBattle battle={true} pokemon={this.state.pokemonUser} competitionValue={this.competitionValue}/>
+              <ColumnBattle battle={true} 
+                pokemon={this.state.pokemonUser} 
+                competitionValue={this.competitionValue}
+              />
             </div>
 
             <div className="col">

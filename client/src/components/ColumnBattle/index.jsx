@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
-import { Button } from 'react-bootstrap'
+import { Button } from 'react-bootstrap';
+
+import './style.scss';
 
 export default class ColumnBattle extends Component {
   constructor(props){
@@ -50,7 +52,7 @@ export default class ColumnBattle extends Component {
                 </li> 
               </ul>
             </div> : 
-            <div>
+            <div className={this.props.style}>
               <h1>{this.props.pokemon.pokemon}</h1>
               <img src={this.props.pokemon.picture} alt={this.props.pokemon.pokemon} />
               <ul>
@@ -81,6 +83,9 @@ export default class ColumnBattle extends Component {
                   
                 </li> 
               </ul>
+
+
+              
             </div>
             }
           

@@ -8,6 +8,7 @@ import ProtectedRoute from './components/ProtectedRoute';
 
 /*Services*/
 import { loadUserInformation } from './services/authentication';
+import { singleUser } from './services/pokemon';
 
 /*VIEWS*/
 import Home from './views/ChooseYourPokemon';
@@ -22,7 +23,8 @@ export default class App extends Component {
     super();
     this.state= {
       user:null,
-      loaded: false
+      loaded: false,
+      userlog:''
     }
 
     this.updateUserInformation = this.updateUserInformation.bind(this);
@@ -37,17 +39,16 @@ export default class App extends Component {
       });
   }
 
-  loadUserInformation(){
-    loadUserInformation()
-      .then(user => 
-        this.setState({
-          user
-        })
-      )
-      .catch(error => {
-        console.log(error);
-      });
+  async loadUserInformation(id){
+    const userlogData = await singleUser({id});
+    const userlog = userlogData.data;
+    this.setState({
+      userlog
+    });
+    
   }
+
+  
 
   updateUserInformation(user) {
     this.setState({
@@ -138,6 +139,7 @@ export default class App extends Component {
                     user={this.state.user}
                     updateUserInformation={this.updateUserInformation}
                     loadUserInformation={this.loadUserInformation}
+                    userlog={this.state.userlog}
                   />
                 )}
               />
