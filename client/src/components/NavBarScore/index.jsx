@@ -3,6 +3,8 @@ import './style.scss';
 import React, { Component } from 'react';
 import { useSwipeable, Swipeable } from 'react-swipeable';
 import { Link } from 'react-router-dom';
+import { Button } from 'react-bootstrap';
+
 
 
 
@@ -23,7 +25,7 @@ class NavBarScore extends Component {
     return (
       <Swipeable onSwipedLeft={this.props.handleMouseDownScore}>
         <div id="flyoutMenu" className={visibility}>
-          <Link to={this.props.redirectPage} onMouseDown={this.props.handleMouseDownScore}>
+          <Button onMouseDown={this.props.handleMouseDownScore}>
             <img
               style={{
                 width: '2em',
@@ -34,7 +36,7 @@ class NavBarScore extends Component {
               src="./../images/left-white.svg"
               alt="go back icon"
             />
-          </Link>
+          </Button>
 
           <h1>SCORE:</h1>
           {this.props.users.map(user => 

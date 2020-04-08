@@ -43,13 +43,13 @@ const editUser = async (data) => {
 const editUserPull = async (data) => {
   const id = data.id;
   const pokemon = data.pokemon;
-  console.log(pokemon);
 
-    try{
-      await instance.put(`/editUserPull/${id}`,{ pokemon }); 
-    }catch (error) {
-      throw error;
-    }
+
+  try{
+    await instance.put(`/editUserPull/${id}`,{ pokemon }); 
+  }catch (error) {
+    throw error;
+  }
   
 }
 

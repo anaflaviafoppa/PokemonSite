@@ -89,7 +89,6 @@ class Navbar extends Component {
           handleMouseDownScore={this.handleMouseDownScore}
           menuVisibility={this.state.visibleScore}
           updateUserInformation={this.props.updateUserInformation}
-          redirectPage={this.props.redirectPage}
         />
 
         <NavBarProfile
@@ -98,7 +97,6 @@ class Navbar extends Component {
           handleMouseDownProfile={this.handleMouseDownProfile}
           menuVisibility={this.state.visibleProfile}
           updateUserInformation={this.props.updateUserInformation}
-          redirectPage={this.props.redirectPage}
         />
 
         <NavBarProfileButton

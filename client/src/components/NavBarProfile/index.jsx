@@ -5,6 +5,9 @@ import { signOut } from './../../services/authentication';
 import { useSwipeable, Swipeable } from 'react-swipeable';
 import { Link } from 'react-router-dom';
 
+import { Button } from 'react-bootstrap';
+
+
 class NavBarProfile extends Component {
   constructor(props) {
     super(props);
@@ -31,7 +34,7 @@ class NavBarProfile extends Component {
     return (
       <Swipeable onSwipedRight={this.props.handleMouseDownProfile}>
         <div id="flyoutSidebarProfile" className={visibility}>
-          <Link to={this.props.redirectPage} onMouseDown={this.props.handleMouseDownProfile}>
+          <Button onMouseDown={this.props.handleMouseDownProfile}>
          
             <img
               style={{
@@ -43,7 +46,7 @@ class NavBarProfile extends Component {
               src="./../images/right-white.svg"
               alt="go back icon"
             />
-          </Link>
+          </Button>
           <img
             style={{
               width: '10em',
