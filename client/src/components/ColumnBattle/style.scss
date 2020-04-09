@@ -1,13 +1,49 @@
 @import "../style/colors";
 @import "../style/fonts";
 @import "../style/sizefonts";
+@import "../style/querys";
+@import "../style/common";
 
-
-.disable{
-  background-color: red;
-}
 
 
 .disableButton{
   display:none !important;
+}
+
+
+.columnBattle{
+  background-color: $orange;
+  border-radius: 1em;
+  margin: 2em 5em 0 5em;
+  padding: 2em;
+  width: auto;
+  
+  
+ 
+
+  li{
+    list-style: none;
+    color: white;
+    font-family: $work;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+
+  .ColumnBattle-img{
+    background-color: white;
+    border-radius: 50%;
+    width: 10em;
+    height: 10em;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    margin: 2em auto;
+  }
+
+
+  .disable{
+    background-color: $lightOrange;
+  }
 }

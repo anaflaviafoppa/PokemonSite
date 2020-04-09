@@ -1,0 +1,137 @@
+@import './colors';
+@import './fonts';
+@import './querys';
+@import './sizefonts';
+
+
+
+h1{
+  text-align: center;
+  text-transform: capitalize;
+  color:$gray;
+  font-family: $work;
+  font-weight: 800;
+  font-size: $h1Desktop;
+
+  @media (max-width: $breakpoint-cellphone){
+    font-size: $h1Cellphone;
+  }
+
+
+  @media (min-width: $breakpoint-cellphone+1) and (max-width: $breakpoint-tablet){
+    font-size: $h1Tablet;
+  }
+
+}
+
+h2{
+  text-align: center;
+  text-transform: capitalize;
+  color:$gray;
+  font-family: $work;
+  font-weight: 500;
+  font-size: $h2Desktop;
+
+  @media (max-width: $breakpoint-cellphone){
+    font-size: $h2Cellphone;
+  }
+
+
+  @media (min-width: $breakpoint-cellphone+1) and (max-width: $breakpoint-tablet){
+    font-size: $h2Tablet;
+  }
+
+}
+
+
+h3{
+  text-align: center;
+  text-transform: capitalize;
+  color:$gray;
+  font-family: $work;
+  //font-weight: 500;
+  font-size: $h3Desktop;
+
+  @media (max-width: $breakpoint-cellphone){
+    font-size: $h3Cellphone;
+  }
+
+
+  @media (min-width: $breakpoint-cellphone+1) and (max-width: $breakpoint-tablet){
+    font-size: $h3Tablet;
+  }
+
+}
+
+h4{
+  text-align: center;
+  text-transform: capitalize;
+  color:$gray;
+  font-family: $work;
+  //font-weight: 500;
+  font-size: $h4Desktop;
+
+  @media (max-width: $breakpoint-cellphone){
+    font-size: $h4Cellphone;
+  }
+
+
+  @media (min-width: $breakpoint-cellphone+1) and (max-width: $breakpoint-tablet){
+    font-size: $h4Tablet;
+  }
+
+}
+
+p{
+  text-align: center;
+  text-transform: capitalize;
+  color:$gray;
+  font-family: $work;
+  //font-weight: 500;
+  font-size: $pDesktop;
+
+  @media (max-width: $breakpoint-cellphone){
+    font-size: $pCellphone;
+  }
+
+
+  @media (min-width: $breakpoint-cellphone+1) and (max-width: $breakpoint-tablet){
+    font-size: $pTablet;
+  }
+
+}
+
+
+button{
+  color:white;
+  border-radius: 32px !important;
+  font-size: $pDesktop;
+  font-family: $work;
+  background-color: $gray;
+  transition: all 0.8s;
+  padding: 0.5em 1.9em;
+  border: none;
+
+
+  @media (max-width: $breakpoint-cellphone){
+    font-size: $pCellphone;
+  }
+
+  @media (min-width: $breakpoint-cellphone+1) and (max-width: $breakpoint-tablet){
+    font-size: $pTablet;
+  }
+
+  &:hover{
+    transform: scale(1.05);
+    background-color: darken($gray,5%);
+  }
+}
+
+
+img{
+  transition: all 0.5s;
+
+  &:hover{
+    transform: scale(1.1);
+  }
+}

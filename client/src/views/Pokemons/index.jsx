@@ -13,7 +13,6 @@ import { editUser } from '../../services/pokemon';
 import { single as singlePokemon } from '../../services/pokemon';
 import { singleUser } from '../../services/pokemon';
 
-
 /*STYLE*/
 import './style.scss';
 
@@ -43,11 +42,9 @@ export default class Pokemons extends Component {
 
     const userlogData = await singleUser({ id });
     const userlog = userlogData.data;
-    
 
-   
     this.setState({
-      user: userlog
+      user: userlog,
     });
 
     /*after add some pokemon will refresh the pokemon*/
@@ -100,15 +97,13 @@ export default class Pokemons extends Component {
   }
 
   render() {
-    let  scoreBefore = this.props.location.state;
+    let scoreBefore = this.props.location.state;
     let pokemonNameUsed;
 
-    if(scoreBefore == undefined){
+    if (scoreBefore == undefined) {
       scoreBefore = -1;
       pokemonNameUsed = 'null';
     }
-
-    
 
     return (
       <div>
@@ -119,53 +114,37 @@ export default class Pokemons extends Component {
           updateUserInformation={this.props.updateUserInformation}
           updateUsersScore={this.triggerUpdateUsersForScore}
         />
-        
+
         {this.state.user !== '' && (
-          <section>
-            { scoreBefore >= 0 && (
-              <h1>
-                { scoreBefore < this.props.location.state.score
-                  ? 'YOU WIN'
-                  : 'YOU LOST THE GAME'}
-              </h1>
-            )}
-            <h1>Choose your next Pokemon to play:</h1>
+          <section className="body">
+            <div className="body-firstChild">
+              <div className="logo">
+                <img src="../images/logo.png" alt="logo"></img>
+              </div>
 
-            <div className="row">
-              {this.state.user.pokemons.map((pokemon) => (
-                <div key={pokemon._id} className="col">
-                  <Link
-                    to={{
-                      pathname: '/battle',
-                      state: {
-                        pokemonUser: pokemon,
-                      },
-                    }}
-                  >
-                    <ColumnBattle
-                      pokemon={pokemon}
-                      battle={false}
-                      style={
-                        pokemonNameUsed === pokemon.pokemon
-                          ? 'disable'
-                          : 'active'
-                      }
-                      randomPokemon={this.triggerUpdatePokemon}
-                    />
-                  </Link>
+              <h1>Pokeball</h1>
 
-                  <Button
-                    onClick={() => this.triggerUpdatePokemon(pokemon)}
-                    className={
-                      pokemonNameUsed === pokemon.pokemon
-                        ? 'disableButton'
-                        : 'activeButton'
-                    }
-                  >
-                    Random Pokemon
-                  </Button>
-                </div>
-              ))}
+              {scoreBefore >= 0 && (
+                <h1>
+                  {scoreBefore < this.props.location.state.score ? 'YOU WIN' : 'YOU LOST THE GAME'}
+                </h1>
+              )}
+
+              <div className="row">
+                {this.state.user.pokemons.map((pokemon) => (
+                  <div key={pokemon._id} className="col">
+
+                      <ColumnBattle
+                        pokemon={pokemon}
+                        battle={false}
+                        style={pokemonNameUsed === pokemon.pokemon ? 'disable' : 'active'}
+                        randomPokemon={this.triggerUpdatePokemon}
+
+                      />
+                  
+                  </div>
+                ))}
+              </div>
             </div>
           </section>
         )}
