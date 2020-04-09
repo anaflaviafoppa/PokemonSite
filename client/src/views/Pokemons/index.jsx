@@ -130,9 +130,9 @@ export default class Pokemons extends Component {
                 </h1>
               )}
 
-              <div className="row">
+              <div className="row row-Cards">
                 {this.state.user.pokemons.map((pokemon) => (
-                  <div key={pokemon._id} className="col">
+                  <div key={pokemon._id} className="col col-Cards pl-0 pr-0 d-flex justify-content-center ml-0 mr-0">
 
                       <ColumnBattle
                         pokemon={pokemon}

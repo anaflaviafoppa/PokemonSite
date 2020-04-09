@@ -7,7 +7,6 @@ import { Link } from 'react-router-dom';
 
 import { Button } from 'react-bootstrap';
 
-
 class NavBarProfile extends Component {
   constructor(props) {
     super(props);
@@ -19,7 +18,7 @@ class NavBarProfile extends Component {
       .then(() => {
         this.props.updateUserInformation(null);
       })
-      .catch(error => {
+      .catch((error) => {
         console.log(error);
       });
   };
@@ -33,59 +32,51 @@ class NavBarProfile extends Component {
 
     return (
       <Swipeable onSwipedRight={this.props.handleMouseDownProfile}>
-        <div id="flyoutSidebarProfile" className={visibility}>
-          <Button onMouseDown={this.props.handleMouseDownProfile}>
-         
+        <div className="d-flex justify-content-center">
+          <div id="flyoutSidebarProfile" className={visibility}>
+            <button className="btn-swipe" onMouseDown={this.props.handleMouseDownProfile}>
+              <img
+                style={{
+                  width: '2em',
+                  float: 'right',
+                  position: 'relative',
+                  margin: '2em 1em',
+                }}
+                src="./../images/right-white.svg"
+                alt="go back icon"
+              />
+            </button>
             <img
               style={{
-                width: '2em',
-                float: 'right',
-                position: 'relative',
-                margin: '2em 1em'
+                width: '10em',
+                height: '10em',
+                margin: '0 auto',
+                borderRadius: '50%',
+                objectFit: 'cover',
               }}
-              src="./../images/right-white.svg"
-              alt="go back icon"
+              src={this.props.user.picture}
+              alt={this.props.user.name}
             />
-          </Button>
-          <img
-            style={{
-              width: '10em',
-              height: '10em',
-              margin: '0 auto',
-              borderRadius: '50%',
-              objectFit: 'cover'
-            }}
-            src={this.props.user.picture}
-            alt={this.props.user.name}
-          />
-          <h2 style={{ color: 'white', fontWeight: '500', marginTop: '1em' }}>
-            {this.props.user.name}
-          </h2>
-          <small style={{ color: 'white', fontWeight: '200' }}>{this.props.user.email}</small>
+            <h2 style={{ color: 'white', fontWeight: '500', marginTop: '1em' }}>
+              {this.props.user.name}
+            </h2>
+            <p>{this.props.user.email}</p>
 
-          <Link
-            style={{
-              backgroundColor: '#3f3d56',
-              fontWeight: '200',
-              color: 'white',
-              margin: '3em 6em 7em 6em',
-              borderRadius: '2em',
-              padding: '0.3em 1em'
-            }}
-            to="/edit"
-          >
-            Edit Profile
-          </Link>
+            
+              <Link
+                to="/edit"
+              >
+                <button className="btn-logout">
+                  Edit Profile
+                </button>
+              </Link>
+            
 
-          <button style={{ color: 'white' }} onClick={this.handleSignOut}>
-            <img
-              style={{ width: '1.6em', margin: '1em' }}
-              src="./../images/logout.svg"
-              alt="logout icon"
-            />
-            Logout
-          </button>
-         
+            <button className="btn-logout" onClick={this.handleSignOut}>
+              <img style={{ width: '1.6em' }} src="./../images/logout.svg" alt="logout icon" />
+              Logout
+            </button>
+          </div>
         </div>
       </Swipeable>
     );

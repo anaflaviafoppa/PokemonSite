@@ -1,12 +1,14 @@
 @import "../style/colors";
 @import "../style/fonts";
 @import "../style/sizefonts";
+@import "../style/querys";
+@import "../style/common";
 
 
 #flyoutSidebarProfile {
   width: 100vw;
   height: 100%;
-  background-color: #544bd8f3;
+  background-color: $lightOrange;
   border: none;
   position: fixed;
   top: 0;
@@ -28,7 +30,7 @@
 }
 
 #flyoutSidebarProfile h2 a {
-  color: #333;
+  color: $gray;
   margin-left: 15px;
   text-decoration: none;
 }
@@ -36,8 +38,19 @@
 
 .nav-style {
   display: flex;
-  background-color: #544bd8;
+  background-color: $lightOrange;
   justify-content: space-between;
   width: 100;
 
+
+  .btn-logout{
+    color: white;
+    width: 14em;
+    margin: 2em auto;
+    font-family: $work;
+  }
+
+  a{
+    margin: 2em auto;
+  }
 }

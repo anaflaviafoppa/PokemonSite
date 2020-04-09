@@ -11,6 +11,7 @@ import NavBarScoreButton from './../NavBarScoreButton';
 import NavBarScore from './../NavBarScore';
 
 import './style.scss';
+import { Link } from 'react-router-dom';
 
 
 class Navbar extends Component {
@@ -82,6 +83,16 @@ class Navbar extends Component {
           handleMouseDownScore={this.handleMouseDownScore}
          
         />
+
+        <div  className="logo">
+          <Link to="/pokemons">
+           
+              <img src="./images/logo.png" alt="logo"></img>
+            
+            
+          </Link>
+        </div>
+        
 
         <NavBarScore
           user={this.props.user}

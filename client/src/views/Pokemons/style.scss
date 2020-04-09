@@ -11,20 +11,27 @@
 
 
 .body{
-
-  height: 94.2vh;
+  height: 100vh;
   overflow-x: hidden;
   background-color: $yellow;
   display: flex;
   justify-content: center;
-  padding-top: 5em;
+  padding-top: 1em;
+  background-image: url('/images/fundo.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 
   .body-firstChild{
     width: 90vw;
     
-    .row{
-      margin: 0 auto;
-      width: 80vw;
+    .row-Cards{
+      margin: 2em auto;
+      padding: 0 12em;
+
+      @media(max-width: $breakpoint-cellphone){
+        padding: 0 1em;
+      }
     }
        
   }

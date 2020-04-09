@@ -8,3 +8,15 @@
 
 
 $work: 'workSans';
+
+
+@font-face {
+  font-family: 'workSans-bold';
+  src: url('../../fonts/WorkSans-Bold.ttf');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+$work-bold: 'workSans-bold';
+

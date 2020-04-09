@@ -1,13 +1,13 @@
-@import "../style/colors";
-@import "../style/fonts";
-@import "../style/sizefonts";
-
-
+@import '../style/colors';
+@import '../style/fonts';
+@import '../style/sizefonts';
+@import '../style/querys';
+@import '../style/common';
 
 #flyoutMenu {
   width: 100vw;
   height: 100%;
-  background-color: red;
+  background-color: $lightOrange;
   border: none;
   position: fixed;
   top: 0;
@@ -29,16 +29,60 @@
 }
 
 #flyoutMenu h2 a {
-  color: #333;
+  color: $gray;
   margin-left: 15px;
   text-decoration: none;
 }
 
-
 .nav-style {
   display: flex;
-  background-color: #544bd8;
+  background-color: $lightOrange;
   justify-content: space-between;
   width: 100;
+  padding-right: 1em;
 
+  li {
+    color: $gray;
+    font-family: $work-bold;
+    font-size: $h2Desktop;
+    padding: 0;
+    margin: 0;
+  }
+
+  ol {
+    margin: 0;
+    padding: 0 0 0 60px;
+
+    &:nth-child(1) {
+      background-color: red;
+    }
+  }
+
+  .list-score {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5em 1em;
+    align-items: center;
+    background-color: $orange;
+    border-radius: 1em;
+    margin: 1em auto;
+    width: 90%;
+
+    h2,
+    h3 {
+      margin: 0;
+      padding: 0;
+    }
+
+    img {
+      border-radius: 50%;
+      width: 3em;
+    }
+  }
+
+  li:nth-child(1) {
+    .list-score {
+      background-color: darken($color: $orange, $amount: 10%) !important;
+    }
+  }
 }

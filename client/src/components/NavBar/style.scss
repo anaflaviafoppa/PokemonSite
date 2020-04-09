@@ -1,15 +1,31 @@
-$darkColor: #3f3d56;
-$purple: #6c63ff;
-$lightGrey: #e2e2e2;
+@import "../style/colors";
+@import "../style/fonts";
+@import "../style/sizefonts";
+@import "../style/querys";
+@import "../style/common";
+
 
 .nav-style {
   display: flex;
   align-items: center;
-  background-color: #544bd8;
+  background-color: $lightOrange;
   justify-content: space-between;
   width: 100;
   padding: 0 1em;
   .profile_name {
     color: white;
+  }
+
+  .logo{
+    display: flex;
+    justify-content: flex-end;
+    margin:0 auto;
+
+    img{
+      width: 8em;
+      height: auto;
+    }
+    
+   
   }
 }
