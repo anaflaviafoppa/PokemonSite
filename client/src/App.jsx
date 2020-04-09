@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
@@ -17,43 +17,39 @@ import EditProfileView from './views/editProfile';
 import Battle from './views/Battle';
 import Pokemons from './views/Pokemons';
 
-
 export default class App extends Component {
-  constructor(){
+  constructor() {
     super();
-    this.state= {
-      user:null,
+    this.state = {
+      user: null,
       loaded: false,
-      userlog:''
-    }
+      userlog: '',
+    };
 
     this.updateUserInformation = this.updateUserInformation.bind(this);
-    this.loadUserInformation=this.loadUserInformation.bind(this);
-  };
+    this.loadUserInformation = this.loadUserInformation.bind(this);
+  }
 
   componentDidMount() {
     loadUserInformation()
-      .then(user => this.updateUserInformation(user))
-      .catch(error => {
+      .then((user) => this.updateUserInformation(user))
+      .catch((error) => {
         console.log(error);
       });
   }
 
-  async loadUserInformation(id){
-    const userlogData = await singleUser({id});
+  async loadUserInformation(id) {
+    const userlogData = await singleUser({ id });
     const userlog = userlogData.data;
     this.setState({
-      userlog
+      userlog,
     });
-    
   }
-
-  
 
   updateUserInformation(user) {
     this.setState({
       loaded: true,
-      user
+      user,
     });
   }
 
@@ -61,49 +57,61 @@ export default class App extends Component {
     const existUser = this.state.user !== null;
     let existUserPokemonsLength;
 
-    if(existUser){
+    if (existUser) {
       existUserPokemonsLength = this.state.user.pokemons.length === 3;
-    } else{
+    } else {
       existUserPokemonsLength = false;
     }
 
-   
     return (
       <div>
-        {this.state.loaded && (<BrowserRouter>
-        <Switch>
-          <ProtectedRoute
-          path="/"
-          exact
-          authorized={!this.state.user}
-          redirect={existUserPokemonsLength ? '/pokemons' : '/home'}
-          redirectPage={existUserPokemonsLength ? '/pokemons' : '/home'}
-          render={props => (
-            <SignInSignOut {...props} updateUserInformation={this.updateUserInformation} />)}
-          />
-
-          <ProtectedRoute
-            path="/home"
-            authorized={this.state.user}
-            redirect={'/'}
-            exact
-            render={props => (
-              <Home
-                user={this.state.user}
-                {...props}
-                updateUserInformation={this.updateUserInformation}
-                loadUserInformation={this.loadUserInformation}
-                  />
+        {this.state.loaded && (
+          <BrowserRouter>
+            <Switch>
+              <ProtectedRoute
+                path="/"
+                exact
+                authorized={!this.state.user}
+                redirect={existUserPokemonsLength ? '/pokemons' : '/home'}
+                redirectPage={existUserPokemonsLength ? '/pokemons' : '/home'}
+                render={(props) => (
+                  <SignInSignOut {...props} updateUserInformation={this.updateUserInformation} />
                 )}
-          />
+              />
 
-          {/* This Route will show the inputs for edit profile */}
-          <ProtectedRoute
+              <ProtectedRoute
+                path="/home"
+                authorized={this.state.user}
+                redirect={'/'}
+                exact
+                render={(props) =>
+                  this.state.user.pokemons.length < 3 ? (
+                    <Home
+                      user={this.state.user}
+                      {...props}
+                      updateUserInformation={this.updateUserInformation}
+                      loadUserInformation={this.loadUserInformation}
+                      userlog={this.state.userlog}
+                    />
+                  ) : (
+                    <Pokemons
+                      {...props}
+                      user={this.state.user}
+                      updateUserInformation={this.updateUserInformation}
+                      loadUserInformation={this.loadUserInformation}
+                      userlog={this.state.userlog}
+                    />
+                  )
+                }
+              />
+
+              {/* This Route will show the inputs for edit profile */}
+              <ProtectedRoute
                 path="/edit"
                 exact
                 authorized={this.state.user}
                 redirect={existUserPokemonsLength ? '/pokemons' : '/home'}
-                render={props => (
+                render={(props) => (
                   <EditProfileView
                     {...props}
                     user={this.state.user}
@@ -113,12 +121,12 @@ export default class App extends Component {
                 )}
               />
 
-            <ProtectedRoute
+              <ProtectedRoute
                 path="/battle"
                 exact
                 authorized={this.state.user}
                 redirect={'/'}
-                render={props => (
+                render={(props) => (
                   <Battle
                     {...props}
                     user={this.state.user}
@@ -133,7 +141,7 @@ export default class App extends Component {
                 exact
                 authorized={this.state.user}
                 redirect={'/'}
-                render={props => (
+                render={(props) => (
                   <Pokemons
                     {...props}
                     user={this.state.user}
@@ -143,16 +151,10 @@ export default class App extends Component {
                   />
                 )}
               />
-
-          
-        </Switch>
-      </BrowserRouter>)}
+            </Switch>
+          </BrowserRouter>
+        )}
       </div>
-      
-    )
+    );
   }
 }
-
-
-
-

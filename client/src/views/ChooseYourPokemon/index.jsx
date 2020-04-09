@@ -9,6 +9,7 @@ import {single as singlePokemon} from '../../services/pokemon';
 import {editUser} from '../../services/pokemon';
 import {editUserCounter} from '../../services/pokemon';
 import UserAll from './../../services/userall';
+import { singleUser } from '../../services/pokemon';
 
 
 /*COMPONENTS*/
@@ -25,7 +26,8 @@ export default class ChooseYourPokemon extends Component {
       numberIdPokemon:12,
       pokemon:'',
       counterRandom:0,
-      users:[]
+      users:[],
+      user:''
     }
 
     this.RandomNumber=this.RandomNumber.bind(this);
@@ -43,7 +45,16 @@ export default class ChooseYourPokemon extends Component {
    /*FETCH DATA */
    async fetchData(){
     
-    await this.props.loadUserInformation();
+    const id = this.props.user._id;
+
+    const userlogData = await singleUser({ id });
+    const userlog = userlogData.data;
+    
+    this.setState({
+      user: userlog
+    });
+
+    
     
     await this.RandomNumber();
 
@@ -58,6 +69,10 @@ export default class ChooseYourPokemon extends Component {
     
      /*after add some pokemon will refresh the pokemon*/
      await this.triggerUpdateUsersForScore();
+
+     if(this.state.user.pokemons.length >= 3){
+      this.props.history.push('/pokemons');
+    }
      
    }
 
@@ -141,7 +156,7 @@ export default class ChooseYourPokemon extends Component {
 
             <RandomPokemon battle={false} pokemon={this.state.pokemon} />
             
-            { this.props.user.pokemons.length < 3 &&
+            { this.state.user.pokemons.length < 3 &&
             <Fragment>
               <Button variant="primary" 
               onClick={() => this.triggerUpdatePokemon(originPokeball)}>
@@ -160,7 +175,7 @@ export default class ChooseYourPokemon extends Component {
 
             <FooterHome
               loadUserInformation={this.props.loadUserInformation}
-              user={this.props.user}
+              user={this.state.user}
 
             />
           </div>
