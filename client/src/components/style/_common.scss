@@ -86,7 +86,7 @@ h4{
 
 }
 
-p{
+p,span {
   text-align: center;
   text-transform: capitalize;
   color:$gray;
@@ -102,6 +102,17 @@ p{
   @media (min-width: $breakpoint-cellphone+1) and (max-width: $breakpoint-tablet){
     font-size: $pTablet;
   }
+
+}
+
+input{
+  border-radius: 32px !important;
+  font-family: $work;
+  padding: 0.5em 1.9em;
+  border: none;
+  font-size: $pDesktop;
+  margin: 1em;
+  color:$gray;
 
 }
 

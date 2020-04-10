@@ -1,0 +1,37 @@
+@import '../../components/style/colors';
+@import '../../components/style/fonts';
+@import '../../components/style/sizefonts';
+@import '../../components/style/querys';
+@import '../../components/style/common';
+
+
+
+.contentSign {
+  height: 100vh;
+  background-color: $yellow;
+  background-image: url('/images/fundo.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  p{
+    color: white;
+    margin: 0;
+  }
+
+  .change-signup-singin{
+    display: flex;
+    justify-content: space-between !important;
+    align-items: center;
+
+    @media(max-width: $breakpoint-cellphone){
+      flex-direction: column;
+      span{
+        margin-bottom: 0.5em;
+      }
+    }
+  }
+}
