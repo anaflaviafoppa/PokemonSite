@@ -5,7 +5,7 @@
 @import "../style/common";
 
 .randomPokemon{
-
+  margin: 1em auto;
   background-color: $blue !important;
 
   .question-mark{
@@ -13,12 +13,13 @@
     margin-top: 5em;
     margin-bottom: 2em;
 
-    h3{
+    h2{
       text-align: center !important;
       margin: 0 auto;
       color:$gray;
       font-weight: 800;
       margin-bottom: 2em;
+      text-transform: capitalize;
     }
   }
 }

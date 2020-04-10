@@ -16,6 +16,8 @@
   border-radius: 1em;
   padding:1.5em;
   width: 20vw;
+  min-height: 690px;
+  margin: 1em auto;
 
   @media (max-width: $breakpoint-tablet){
     width: 90vw;

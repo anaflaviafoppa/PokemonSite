@@ -16,7 +16,7 @@ const RandomPokemon = (props) => {
             <img src={props.pokemon.sprites.front_default} alt={props.pokemon.name} />
           </div>
           <div className="question-mark">
-            <h3>Your Opponent:</h3>
+            <h2>Your Opponent:</h2>
             <img src="./images/question.png" alt="question"></img>
           </div>
           
