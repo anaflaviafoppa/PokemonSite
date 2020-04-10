@@ -106,7 +106,7 @@ export default class Pokemons extends Component {
     }
 
     return (
-      <div>
+      <div className="content">
         <NavBar
           user={this.props.user}
           users={this.state.users}
@@ -118,9 +118,7 @@ export default class Pokemons extends Component {
         {this.state.user !== '' && (
           <section className="body">
             <div className="body-firstChild">
-              <div className="logo">
-                <img src="../images/logo.png" alt="logo"></img>
-              </div>
+             
 
               <h1>Pokeball</h1>
 

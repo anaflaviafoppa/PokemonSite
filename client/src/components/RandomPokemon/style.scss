@@ -1,0 +1,24 @@
+@import "../style/colors";
+@import "../style/fonts";
+@import "../style/sizefonts";
+@import "../style/querys";
+@import "../style/common";
+
+.randomPokemon{
+
+  background-color: $blue !important;
+
+  .question-mark{
+    text-align: center;
+    margin-top: 5em;
+    margin-bottom: 2em;
+
+    h3{
+      text-align: center !important;
+      margin: 0 auto;
+      color:$gray;
+      font-weight: 800;
+      margin-bottom: 2em;
+    }
+  }
+}

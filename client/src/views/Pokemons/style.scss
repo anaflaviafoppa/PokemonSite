@@ -1,51 +1,51 @@
-@import "../../components/style/colors";
-@import "../../components/style/fonts";
-@import "../../components/style/sizefonts";
-@import "../../components/style/querys";
-@import "../../components/style/common";
+@import '../../components/style/colors';
+@import '../../components/style/fonts';
+@import '../../components/style/sizefonts';
+@import '../../components/style/querys';
+@import '../../components/style/common';
 
-
-.disable{
+.disable {
   background-color: red !important;
 }
 
-
-.body{
+.content {
   height: 100vh;
-  overflow-x: hidden;
   background-color: $yellow;
-  display: flex;
-  justify-content: center;
-  padding-top: 1em;
   background-image: url('/images/fundo.png');
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
 
-  .body-firstChild{
-    width: 90vw;
+  .body {
     
-    .row-Cards{
-      margin: 2em auto;
-      padding: 0 12em;
-
-      @media(max-width: $breakpoint-cellphone){
-        padding: 0 1em;
-      }
-    }
-       
-  }
-
-  .logo{
+    overflow-x: hidden;
     display: flex;
     justify-content: center;
-    padding-bottom: 2em;
-
-    img{
-      width: 16em;
-      height: auto;
-    }
+    padding-top: 3em;
     
-   
+
+    .body-firstChild {
+      width: 90vw;
+
+      .row-Cards {
+        margin: 2em auto;
+        padding: 0 12em;
+
+        @media (max-width: $breakpoint-cellphone) {
+          padding: 0 1em;
+        }
+      }
+    }
+
+    .logo {
+      display: flex;
+      justify-content: center;
+      padding-bottom: 2em;
+
+      img {
+        width: 16em;
+        height: auto;
+      }
+    }
   }
 }

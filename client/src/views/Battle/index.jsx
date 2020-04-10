@@ -11,6 +11,8 @@ import {editUser} from '../../services/pokemon';
 import { editUserPull } from '../../services/pokemon';
 import UserAll from './../../services/userall';
 
+import './style.scss';
+
 
 export default class Battle extends Component {
   constructor(){
@@ -136,7 +138,7 @@ async competitionValue(nameOfAbility, userValue){
   render() {
     return (
       
-      <div>
+      <div className="content">
          <NavBar
           user={this.props.user}
           users={this.state.users}
@@ -146,14 +148,18 @@ async competitionValue(nameOfAbility, userValue){
           redirectPage={'/battle'}
         />
         { this.state.pokemon !== '' &&
-        <section>
-          <h1>Choose your caract.</h1>
+        <section className="body">
+          
           <div className="row">
             <div className="col">
               <ColumnBattle battle={true} 
                 pokemon={this.state.pokemonUser} 
                 competitionValue={this.competitionValue}
               />
+            </div>
+
+            <div className="col vs-image">
+              <img src="./images/VS.png" alt="versus" />
             </div>
 
             <div className="col">

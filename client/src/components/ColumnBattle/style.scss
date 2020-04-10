@@ -22,6 +22,9 @@
     margin-bottom: 2em;
   }
 
+  h2{
+    text-transform: uppercase;
+  }
   
   
   li{
@@ -69,10 +72,16 @@
 
   }
 
+  
+
   h3{
     &:last-of-type{
       text-align: left;
     }
+  }
+
+  .h3-battle{
+    text-align: center !important;
   }
 
   .row-choose{
@@ -86,4 +95,26 @@
   .disable{
     background-color: $lightOrange;
   }
+
+  .btn-battle{
+    background-color:$yellow;
+    margin: 0.5em auto;
+    min-width: 15em;
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+  
+    p{
+      margin:0;
+      padding:0;
+      color: white;
+    }
+  
+    &:hover{
+      border: 2px solid white;
+      background-color:$gray;
+    }
+  }
 }
+
+
