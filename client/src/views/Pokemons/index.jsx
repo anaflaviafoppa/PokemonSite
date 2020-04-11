@@ -151,8 +151,11 @@ export default class Pokemons extends Component {
                 ))}
               </div>
             </div>
-          </section>
+
+            
+          </section>  
         )}
+        <p className="pt-5 pb-2">Ana Flavia Foppa © 2020</p>
       </div>
     );
   }

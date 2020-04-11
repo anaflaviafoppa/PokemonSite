@@ -150,7 +150,7 @@ export default class Battle extends Component {
                   />
                 </div>
 
-                <div className="col vs-image">
+                <div className="col vs-image d-flex justify-content-center">
                   <img src="./images/VS.png" alt="versus" />
                 </div>
 
@@ -161,6 +161,7 @@ export default class Battle extends Component {
             </div>
           </section>
         )}
+        <p className="pt-5 pb-2">Ana Flavia Foppa © 2020</p>
       </div>
     );
   }

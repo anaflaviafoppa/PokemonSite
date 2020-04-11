@@ -17,6 +17,7 @@ const pokemonRouter = require('./routes/pokemon');
 const userAll = require('./routes/userAll');
 
 const app = express();
+app.use(express.static(join(__dirname, './../client/build')));
 
 app.use(serveFavicon(join(__dirname, 'public/images', 'favicon.ico')));
 app.use(logger('dev'));
@@ -46,6 +47,10 @@ app.use('/api', indexRouter);
 app.use('/api/authentication', authenticationRouter);
 app.use('/api/pokemon',pokemonRouter);
 app.use('/api/all', userAll);
+
+app.get('*', (req, res, next) => {
+  res.sendFile(join(__dirname, './../client/build/index.html'));
+});
 
 // Catch missing routes and forward to error handler
 app.use((req, res, next) => {
