@@ -4,22 +4,24 @@
 @import '../../components/style/querys';
 @import '../../components/style/common';
 
-.disable {
-  background-color: red !important;
-}
+
 
 .content {
-  height: 100vh;
+  height: 100%;
   background-color: $yellow;
   background-image: url('/images/fundo.png');
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  padding-bottom: 3em;
+  
 
   @media(max-width: $breakpoint-tablet){
     height:100%;
-    margin-bottom: 3em;
+    padding-bottom: 3em;
   }
+
+ 
 
   .body {
     

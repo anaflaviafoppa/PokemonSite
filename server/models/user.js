@@ -18,7 +18,7 @@ const schema = new mongoose.Schema({
   },
   picture: {
     type: String,
-    default: 'https://res.cloudinary.com/dq4jevckc/image/upload/v1584440915/avatar_kletok.svg'
+    default: 'https://res.cloudinary.com/ddz8awd1y/image/upload/v1586571859/profile_pwyz0g.png'
   },
   score:{
     type: Number,

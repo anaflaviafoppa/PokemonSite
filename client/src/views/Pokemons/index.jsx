@@ -103,7 +103,12 @@ export default class Pokemons extends Component {
     if (scoreBefore == undefined) {
       scoreBefore = -1;
       pokemonNameUsed = 'null';
+    }else{
+      scoreBefore = this.props.location.state.scoreBefore;
+      pokemonNameUsed = this.props.location.state.pokemonNameUsed;
     }
+
+    
 
     return (
       <div className="content">
@@ -119,14 +124,13 @@ export default class Pokemons extends Component {
           <section className="body">
             <div className="body-firstChild">
              
-
-              <h1>Pokeball</h1>
-
               {scoreBefore >= 0 && (
                 <h1>
                   {scoreBefore < this.props.location.state.score ? 'YOU WIN' : 'YOU LOST THE GAME'}
                 </h1>
               )}
+
+              <h1>Pokeball:</h1>
 
               <div className="row row-Cards">
                 {this.state.user.pokemons.map((pokemon) => (
@@ -135,7 +139,7 @@ export default class Pokemons extends Component {
                       <ColumnBattle
                         pokemon={pokemon}
                         battle={false}
-                        style={pokemonNameUsed === pokemon.pokemon ? 'disable' : 'active'}
+                        style={pokemonNameUsed === pokemon.pokemon ? 'disabled' : 'active'}
                         randomPokemon={this.triggerUpdatePokemon}
 
                       />

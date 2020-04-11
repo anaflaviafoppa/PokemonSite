@@ -19,6 +19,8 @@
   min-height: 690px;
   margin: 1em auto;
 
+  
+
   @media (max-width: $breakpoint-tablet){
     width: 90vw;
     margin-bottom: 2em;
@@ -119,6 +121,20 @@
       border: 2px solid white;
       background-color:$gray;
     }
+  }
+
+  .img-star-heart{
+    display: flex;
+    justify-content: flex-end;
+    position: relative;
+    left: 3em;
+    bottom:3em;
+    margin-bottom: -4em;
+
+    img{
+      width: 5em;
+    }
+    
   }
 }
 

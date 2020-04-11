@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { MdCached } from 'react-icons/md';
+import { OverlayTrigger, Tooltip } from 'react-bootstrap';
 
 import './style.scss';
 
@@ -85,11 +86,50 @@ export default class ColumnBattle extends Component {
               </div>
             ) : (
               <div className={this.props.style}>
+                <div className="img-star-heart">
+                  {this.props.style === 'disabled' ? (
+                    <OverlayTrigger
+                      overlay={
+                        <Tooltip id="tooltip-disabled">
+                          {this.props.pokemon.pokemon} needs to rest
+                        </Tooltip>
+                      }
+                    >
+                      <span className="d-inline-block">
+                        <img src="./images/heart.png" alt="heart" />
+                      </span>
+                    </OverlayTrigger>
+                  ) : (
+                    <OverlayTrigger
+                      overlay={
+                        <Tooltip id="tooltip-disabled">
+                          {this.props.pokemon.pokemon} is ready to battle!
+                        </Tooltip>
+                      }
+                    >
+                      <span className="d-inline-block">
+                        <img src="./images/star.png" alt="start" />
+                      </span>
+                    </OverlayTrigger>
+                  )}
+                </div>
                 <div className="btn-refresh-pokemon">
                   <h3>HP: {this.props.pokemon.statsNumber[5]}</h3>
-                  <button onClick={() => this.props.randomPokemon(this.props.pokemon)}>
-                    Refresh <MdCached />
-                  </button>
+                  {this.props.style !== 'disabled' && (
+                    <OverlayTrigger
+                      overlay={
+                        <Tooltip id="tooltip-disabled">
+                          This will cost you 25 points!
+                        </Tooltip>
+                      }
+                    >
+                      <span className="d-inline-block">
+                        <button onClick={() => this.props.randomPokemon(this.props.pokemon)}>
+                          Refresh <MdCached />
+                        </button>
+                      </span>
+                    </OverlayTrigger>
+                  )}
                 </div>
 
                 <div className="ColumnBattle-img">
@@ -118,19 +158,20 @@ export default class ColumnBattle extends Component {
                     </ul>
                   </div>
                 </div>
-
-                <div className="row row-choose">
-                  <Link
-                    to={{
-                      pathname: '/battle',
-                      state: {
-                        pokemonUser: this.props.pokemon,
-                      },
-                    }}
-                  >
-                    <button>Choose</button>
-                  </Link>
-                </div>
+                {this.props.style !== 'disabled' && (
+                  <div className="row row-choose">
+                    <Link
+                      to={{
+                        pathname: '/battle',
+                        state: {
+                          pokemonUser: this.props.pokemon,
+                        },
+                      }}
+                    >
+                      <button>Choose</button>
+                    </Link>
+                  </div>
+                )}
               </div>
             )}
           </div>
