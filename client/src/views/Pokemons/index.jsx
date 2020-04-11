@@ -5,6 +5,9 @@ import { Button } from 'react-bootstrap';
 /*COMPONENTS*/
 import NavBar from './../../components/NavBar';
 import ColumnBattle from './../../components/ColumnBattle';
+import {Win, Loose}  from './../../components/Win';
+
+
 
 /*Services*/
 import UserAll from './../../services/userall';
@@ -126,11 +129,11 @@ export default class Pokemons extends Component {
              
               {scoreBefore >= 0 && (
                 <h1>
-                  {scoreBefore < this.props.location.state.score ? 'YOU WIN' : 'YOU LOST THE GAME'}
+                  {scoreBefore < this.props.location.state.score ? <Win /> : <Loose />}
                 </h1>
               )}
 
-              <h1>Pokeball:</h1>
+              <h2>Choose your next Pokemon:</h2>
 
               <div className="row row-Cards">
                 {this.state.user.pokemons.map((pokemon) => (
