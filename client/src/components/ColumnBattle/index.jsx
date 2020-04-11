@@ -88,7 +88,7 @@ export default class ColumnBattle extends Component {
                 <div className="btn-refresh-pokemon">
                   <h3>HP: {this.props.pokemon.statsNumber[5]}</h3>
                   <button onClick={() => this.props.randomPokemon(this.props.pokemon)}>
-                    <MdCached />
+                    Refresh <MdCached />
                   </button>
                 </div>
 

@@ -1,31 +1,42 @@
+@import "../style/colors";
+@import "../style/fonts";
+@import "../style/sizefonts";
+@import "../style/querys";
+@import "../style/common";
+
 $darkColor: #3f3d56;
 $purple: #6c63ff;
 $lightGrey: #e2e2e2;
 
 .footer-style {
   display: flex;
-  background-color: $darkColor;
-  justify-content: space-between;
+  background-color: $gray;
+  justify-content: flex-start;
   align-items: center;
   position: fixed;
   bottom: 0;
   width: 100%;
   padding: 0.5em 1em;
 
-  h5 {
-    font-size: 1.5em;
-    font-weight: 800;
-    color: $purple;
-    small{
-      font-size: 1em;
-    font-weight: 200;
-    color: white;
-    }
-  }
+  
 
-  .battle-btn{
-    width: 1em;
-    height: auto;
+  .pokeball{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    h3{
+      margin:0;
+      padding: 0;
+      color: white;
+    }
+
+    img{
+      width: 2em;
+      height: 2em;
+      margin-right: 1em;
+    }
+    
   };
 
 }

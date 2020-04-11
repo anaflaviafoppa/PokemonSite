@@ -141,7 +141,7 @@ export default class ChooseYourPokemon extends Component {
     const originPokeball = false;
     
     return (
-      <div>
+      <div className="content">
         <NavBar
           user={this.props.user}
           users={this.state.users}
@@ -152,27 +152,16 @@ export default class ChooseYourPokemon extends Component {
         />
 
         {this.state.pokemon !== '' &&
-          <div>
+          <div className="body">
 
-            <RandomPokemon battle={false} pokemon={this.state.pokemon} />
+            <RandomPokemon battle={false} 
+            pokemon={this.state.pokemon} 
+            userPokemon={this.state.user.pokemons.length < 3} 
+            triggerUpdatePokemon={this.triggerUpdatePokemon}
+            originPokeball={false}
+            addPokemon={this.addPokemon}
+            />
             
-            { this.state.user.pokemons.length < 3 &&
-            <Fragment>
-              <Button variant="primary" 
-              onClick={() => this.triggerUpdatePokemon(originPokeball)}>
-                Random pokemon
-              </Button>
-
-              <Button onClick={this.addPokemon}>
-              
-              <img 
-                src="./../images/pokeball.svg"
-                alt="pokeball" />
-              </Button>
-            </Fragment>
-            }
-            
-
             <FooterHome
               loadUserInformation={this.props.loadUserInformation}
               user={this.state.user}

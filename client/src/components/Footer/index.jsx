@@ -6,7 +6,6 @@ import FooterPokemonButton from '../FooterPokemonButton';
 import './style.scss';
 import { Link } from 'react-router-dom';
 
-
 class FooterHome extends Component {
   constructor(props, context) {
     super(props, context);
@@ -29,17 +28,16 @@ class FooterHome extends Component {
   handleMouseUpBattle() {
     this.toggleBattle();
   }
-  
- 
+
   toggleBattle() {
     this.setState({
-      visibleBattle: !this.state.visibleBattle
+      visibleBattle: !this.state.visibleBattle,
     });
   }
 
   toggleSwipeBattle() {
     this.setState({
-      sidebarBattle: !this.state.sidebarBattle
+      sidebarBattle: !this.state.sidebarBattle,
     });
   }
 
@@ -50,45 +48,35 @@ class FooterHome extends Component {
 
   toggleViewPokemon() {
     this.setState({
-      visibleViewPokemon: !this.state.visibleViewPokemon
+      visibleViewPokemon: !this.state.visibleViewPokemon,
     });
   }
   toggleSwipeViewPokemon() {
     this.setState({
-      sidebarViewPokemon: !this.state.sidebarViewPokemon
+      sidebarViewPokemon: !this.state.sidebarViewPokemon,
     });
   }
 
-  
   render() {
-   
     return (
       <footer className="footer-style">
-
-      { this.props.user.pokemons.map( pokemon => 
-        <Fragment  key={pokemon.pokemon}>
-          <FooterPokemonButton
-            name={pokemon.pokemon}
-            picture={pokemon.picture}
-            handleMouseUp={this.handleMouseUpViewPokemon}
-            menuVisibility={this.state.visibleViewPokemon}
-            handleMouseUp={this.handleMouseUpViewPokemon}
-            menuVisibility={this.state.visibleViewPokemon}
-          />
-
-        </Fragment>
-      )}
-
-       <Link 
-                to={{
-                    pathname: '/pokemons',
-                    state: {
-                     scoreBefore: -1
-                   }
-                }}
-                >
-          <img className="battle-btn" src="./../../../images/add.svg" alt="add" />
-        </Link>
+        <div className="pokeball">
+          <img src="./images/pokeball.png" alt="pokeball" />
+          <h3>Your Pokeball:</h3>
+       
+        {this.props.user.pokemons.map((pokemon) => (
+          <Fragment key={pokemon.pokemon}>
+            <FooterPokemonButton
+              name={pokemon.pokemon}
+              picture={pokemon.picture}
+              handleMouseUp={this.handleMouseUpViewPokemon}
+              menuVisibility={this.state.visibleViewPokemon}
+              handleMouseUp={this.handleMouseUpViewPokemon}
+              menuVisibility={this.state.visibleViewPokemon}
+            />
+          </Fragment>
+        ))}
+        </div>
       </footer>
     );
   }

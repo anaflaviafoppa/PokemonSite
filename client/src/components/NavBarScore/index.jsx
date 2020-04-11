@@ -32,10 +32,16 @@ class NavBarScore extends Component {
             />
           </button>
 
+          <div className="d-flex justify-content-center">
+            <div className="crown-div">
+              <img src="./images/crown.svg" alt="crown"></img>
+            </div>
+          </div>
+
           <h1>SCORE:</h1>
           <ol>
             {this.props.users.map((user) => (
-              <li key={user._id} >
+              <li key={user._id}>
                 <div className="list-score">
                   <img src={user.picture} alt="profile" />
                   <h2>{user.name}</h2>

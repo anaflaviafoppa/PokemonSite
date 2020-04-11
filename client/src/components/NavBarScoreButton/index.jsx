@@ -9,12 +9,15 @@ class NavBarScoreButton extends Component {
   render() {
     
     return (
-      <img
+      <div className="div-score">
+        <img 
         id="buttonImg"
-        src="./../images/score.svg"
+        src="./../images/crown.svg"
         alt='score'
         onMouseDown={this.props.handleMouseDownScore}
       />
+      </div>
+      
     );
   }
 }

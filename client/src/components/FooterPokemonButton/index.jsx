@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 
 
 import './style.scss';
@@ -14,15 +14,15 @@ class FooterPokemonButton extends Component {
    
     return (
       
-      <div className="scores-task">
+      <div className="pokeball-pokemon">
         
-          <Fragment>
+          
             <div>
-              <img className="scores-btn" src={this.props.picture} alt={this.props.name} />
+              <img src={this.props.picture} alt={this.props.name} />
               <small>{this.props.name}</small>
             </div>
             
-          </Fragment>
+          
         
       </div>
       
