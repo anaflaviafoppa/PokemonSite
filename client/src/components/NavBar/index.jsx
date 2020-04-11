@@ -85,7 +85,7 @@ class Navbar extends Component {
         />
 
         <div  className="logo">
-          <Link to="/pokemons">
+          <Link to={this.props.redirectPage}>
            
               <img src="./images/logo.png" alt="logo"></img>
             

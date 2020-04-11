@@ -148,7 +148,7 @@ export default class ChooseYourPokemon extends Component {
           {...this.props}
           updateUserInformation={this.props.updateUserInformation}
           updateUsersScore={this.triggerUpdateUsersForScore}
-          redirectPage={'/home'}
+          redirectPage={'/pokemons'}
         />
 
         {this.state.pokemon !== '' &&
