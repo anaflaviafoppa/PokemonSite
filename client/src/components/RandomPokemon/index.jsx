@@ -3,7 +3,6 @@ import { MdCached } from 'react-icons/md';
 import { OverlayTrigger, Tooltip } from 'react-bootstrap';
 
 /*COMPONENTS*/
-import SpritesPokemon from '../spritesPokemon';
 import Stats from '../Stats';
 
 import './style.scss';

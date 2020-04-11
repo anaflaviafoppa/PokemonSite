@@ -1,0 +1,84 @@
+@import '../../components/style/colors';
+@import '../../components/style/fonts';
+@import '../../components/style/sizefonts';
+@import '../../components/style/querys';
+@import '../../components/style/common';
+
+.edit__profile{
+  background-color: $lightOrange;
+  padding-bottom: 3em;
+  padding-left:2em;
+  padding-right: 2em;
+
+  .exit-icon{
+    width: 2em;
+    margin: 2em 1em;
+  }
+
+  .edit__profile__content{
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    height: 100vh;
+    margin-bottom: 3em;
+
+    @media(max-width: $breakpoint-tablet){
+      width: 60vw;
+      height: 100;
+    }
+
+    h1{
+      margin-bottom: 2em;
+
+      @media(max-width: $breakpoint-cellphone){
+        margin-bottom: 1em;
+      }
+    }
+
+    figure{
+      display: flex;
+      justify-content: center;
+    }
+
+    label{
+      text-align: start;
+      margin-top: 2em;
+      margin-left: 1em;
+
+      @media(max-width: $breakpoint-cellphone){
+        margin-top: 0.5em;
+        margin-left: 1em;
+      }
+    }
+    
+
+    .profile-img-edit{
+      width: 12em;
+      height: 12em;
+      border-radius: 50%;
+    }
+
+    form{
+      margin-top: 2em;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+
+      @media(max-width: $breakpoint-cellphone){
+        margin-top: 0.5em;
+      }
+    }
+
+    .editProfile__btn{
+      margin-bottom: 2em;
+    }
+
+    input[type='file'] {
+      margin-bottom: 2em;
+    }
+  }
+
+  
+
+ 
+}
