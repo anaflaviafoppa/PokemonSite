@@ -23,13 +23,38 @@
 
   .text{
     position: relative;
-    bottom: 1.7em;
+    bottom: 1.6em;
     color:white;
+    font-size: $h3Desktop;
   }
 
   .ribbon{
     width: 11em;
     height: auto;
     z-index: 0;
+  }
+
+
+  @media (max-width: $breakpoint-cellphone) {
+    height: 5em;
+    width: 5em;
+
+    img{
+      width: 2em;
+      height: 2em;
+    }
+  
+    .text{
+      position: relative;
+      bottom: 1.6em;
+      color:white;
+      font-size: $h4Cellphone;
+    }
+  
+    .ribbon{
+      width: 6em;
+      height: auto;
+      z-index: 0;
+    }
   }
 }
