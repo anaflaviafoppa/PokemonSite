@@ -16,7 +16,7 @@ export default class ColumnBattle extends Component {
     return (
       <div className="columnBattle">
         {this.props.pokemon && (
-          <div>
+          <div className="columnBattle-battle ">
             {this.props.battle ? (
               <div>
                 <h2>{this.props.pokemon.pokemon}</h2>
@@ -118,14 +118,12 @@ export default class ColumnBattle extends Component {
                   {this.props.style !== 'disabled' && (
                     <OverlayTrigger
                       overlay={
-                        <Tooltip id="tooltip-disabled">
-                          This will cost you 25 points!
-                        </Tooltip>
+                        <Tooltip id="tooltip-disabled">This will cost you 25 points!</Tooltip>
                       }
                     >
                       <span className="d-inline-block">
                         <button onClick={() => this.props.randomPokemon(this.props.pokemon)}>
-                          Refresh <MdCached />
+                          Change <MdCached />
                         </button>
                       </span>
                     </OverlayTrigger>

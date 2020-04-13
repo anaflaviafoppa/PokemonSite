@@ -31,7 +31,7 @@ const RandomPokemon = (props) => {
                   className="random-btn"
                   onClick={() => props.triggerUpdatePokemon(props.originPokeball)}
                 >
-                  Refresh <MdCached />
+                  Change <MdCached />
                 </button>
               </span>
             </OverlayTrigger>

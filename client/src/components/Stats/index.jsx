@@ -1,14 +1,15 @@
 import React from 'react'
+import './style.scss';
 
 const Stats = (props) => {
   return (
-    <ul>
+    <div>
       {props.pokemon.stats.map( stat => 
-      <li key={stat.stat.name}>
-        {stat.stat.name} : {stat.base_stat}
-      </li>
+      <div key={stat.stat.name} className="statsLi">
+        <p>{stat.stat.name} :</p> <p>{stat.base_stat}</p>
+      </div>
       )}
-    </ul>
+    </div>
   )
 }
 

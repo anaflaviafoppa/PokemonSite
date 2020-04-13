@@ -1,0 +1,17 @@
+@import '../style/colors';
+@import '../style/fonts';
+@import '../style/sizefonts';
+@import '../style/querys';
+@import '../style/common';
+
+
+.statsLi{
+ display: flex;
+ justify-content: space-between !important;
+
+ p{
+   color: white;
+   margin:0;
+
+ }
+}

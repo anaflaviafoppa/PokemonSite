@@ -78,6 +78,16 @@
       border-radius: 50%;
       width: 3em;
     }
+
+    @media (max-width: $breakpoint-cellphone) {
+      img {
+        width: 1em;
+      }
+
+      ol,h2,h3 {
+        font-size:$h2Cellphone !important;
+      }
+    }
   }
 
   li:nth-child(1) {
@@ -86,7 +96,7 @@
     }
   }
 
-  .crown-div{
+  .crown-div {
     background-color: white;
     padding: 1em;
     border-radius: 50%;
@@ -97,16 +107,18 @@
     align-items: center;
     margin-bottom: 1em;
 
-    @media(max-width:$breakpoint-tablet){
+    img {
+      width: 10em;
+    }
+
+    @media (max-width: $breakpoint-tablet) {
       width: 5em;
       height: 5em;
 
-      img{
+      img {
         width: 4em;
+        height: auto;
       }
-    }
-    img{
-      width: 10em;
     }
   }
 }

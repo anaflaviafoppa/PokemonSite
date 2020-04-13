@@ -62,7 +62,7 @@ class FooterHome extends Component {
       <footer className="footer-style">
         <div className="pokeball">
           <img src="./images/pokeball.png" alt="pokeball" />
-          <h3>Your Pokeball:</h3>
+          <h3 className="your-pokeball-text">Your Pokeball:</h3>
        
         {this.props.user.pokemons.map((pokemon) => (
           <Fragment key={pokemon.pokemon}>

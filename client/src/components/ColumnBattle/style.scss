@@ -1,150 +1,159 @@
-@import "../style/colors";
-@import "../style/fonts";
-@import "../style/sizefonts";
-@import "../style/querys";
-@import "../style/common";
+@import '../style/colors';
+@import '../style/fonts';
+@import '../style/sizefonts';
+@import '../style/querys';
+@import '../style/common';
 
-
-
-.disableButton{
-  display:none !important;
+.disableButton {
+  display: none !important;
 }
 
-
-.columnBattle{
+.columnBattle {
   background-color: $orange;
   border-radius: 1em;
-  padding:1.5em;
+  padding: 1.5em;
   min-width: 20vw;
   min-height: 690px;
   margin: 1em auto;
- 
-  -webkit-box-shadow: 10px 10px 10px 8px rgba(0,0,0,0.1);
-  -moz-box-shadow: 10px 10px 10px 8px rgba(0,0,0,0.1);
-  box-shadow: 10px 10px 10px 8px rgba(0,0,0,0.1);
 
-  
+  -webkit-box-shadow: 10px 10px 10px 8px rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: 10px 10px 10px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 10px 10px 10px 8px rgba(0, 0, 0, 0.1);
 
-  @media (max-width: $breakpoint-tablet){
+  @media (max-width: $breakpoint-tablet) and (min-width: $breakpoint-cellphone+1){
     width: 90vw;
-    margin-bottom: 2em;
   }
 
-  @media (min-width: $breakpoint-desktop) and (max-width: $breakpoint-large){
+  @media (max-width: $breakpoint-cellphone) {
+    min-width: 85vw !important;
+    margin-left: 1.5em;
+    margin-right: 1.5em;
+  }
+
+
+  @media (min-width: $breakpoint-desktop) and (max-width: $breakpoint-large) {
     min-width: 25vw;
   }
 
+  
 
-  h2{
+  h2 {
     text-transform: uppercase;
   }
-  
-  
-  li{
-    //list-style: none;
+
+  li {
     color: white;
     font-family: $work;
     display: flex;
     align-items: center;
     justify-content: space-between;
     font-size: $pDesktop;
+
+    @media (max-width: $breakpoint-cellphone) {
+      font-size: $pCellphone;
+    }
   }
 
-  ul{
-    padding:0;
+  ul {
+    padding: 0;
   }
 
-
-  .ColumnBattle-img{
+  .ColumnBattle-img {
     background-color: white;
     border-radius: 50%;
     width: 12em;
     height: 12em;
-    display:flex;
+    display: flex;
     justify-content: center;
     align-items: center;
     margin: 0em auto 2em auto;
-    
 
-    img{
+    img {
       width: 8em;
     }
   }
 
-  .btn-refresh-pokemon{
+  .btn-refresh-pokemon {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding-top:1em;
+    padding-top: 1em;
     margin-bottom: 1em;
 
-    h3{
+    h3 {
       margin: 0;
       padding: 0.5em 1.9em;
       border-radius: 32px !important;
       background-color: $gray;
-    }
-    
 
+      @media (max-width: $breakpoint-cellphone) {
+        padding: 0.5em 1em;
+      }
+    }
   }
 
-  
-
-  h3{
-    &:last-of-type{
+  h3 {
+    &:last-of-type {
       text-align: left;
     }
   }
 
-  .h3-battle{
+  .h3-battle {
     text-align: center !important;
+   
   }
 
-  .row-choose{
+  .row-choose {
     display: flex;
     justify-content: center;
-    padding-top:2em;
+    padding-top: 2em;
     padding-bottom: 1em;
   }
 
-
-  .disable{
+  .disable {
     background-color: $lightOrange;
   }
 
-  .btn-battle{
-    background-color:$yellow;
+  .btn-battle {
+    background-color: $yellow;
     margin: 0.5em auto;
     min-width: 15em;
-    display:flex;
+    display: flex;
     justify-content: space-between;
     align-items: center;
-  
-    p{
-      margin:0;
-      padding:0;
+    
+    
+    @media(max-width: $breakpoint-cellphone){
+      width: 80vw;
+
+      p{
+        font-size: $h3Desktop;
+      }
+    }
+
+    p {
+      margin: 0;
+      padding: 0;
       color: white;
     }
-  
-    &:hover{
+
+    &:hover {
       border: 2px solid white;
-      background-color:$gray;
+      background-color: $gray;
     }
   }
 
-  .img-star-heart{
+  .img-star-heart {
     display: flex;
     justify-content: flex-end;
     position: relative;
     left: 3em;
-    bottom:3em;
+    bottom: 3em;
     margin-bottom: -4em;
+    
 
-    img{
+    img {
       width: 5em;
     }
-    
   }
 }
-
-

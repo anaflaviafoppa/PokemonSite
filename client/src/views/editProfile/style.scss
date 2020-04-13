@@ -25,6 +25,10 @@
     @media(max-width: $breakpoint-tablet){
       width: 60vw;
       height: 100;
+
+      input{
+        width: 90vw;
+      }
     }
 
     h1{
@@ -32,6 +36,7 @@
 
       @media(max-width: $breakpoint-cellphone){
         margin-bottom: 1em;
+        
       }
     }
 
