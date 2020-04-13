@@ -36,23 +36,23 @@
 
 
   @media (max-width: $breakpoint-cellphone) {
-    height: 5em;
-    width: 5em;
+    height: 7em;
+    width: 7em;
 
     img{
-      width: 2em;
-      height: 2em;
+      width: 5em;
+      height: 5em;
     }
   
     .text{
       position: relative;
       bottom: 1.6em;
       color:white;
-      font-size: $h4Cellphone;
+      font-size: $h3Cellphone;
     }
   
     .ribbon{
-      width: 6em;
+      width: 8em;
       height: auto;
       z-index: 0;
     }

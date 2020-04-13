@@ -26,6 +26,7 @@ export default class Pokemons extends Component {
       users: [],
       numberIdPokemon: 4,
       user: '',
+      score:0
     };
 
     this.RandomNumber = this.RandomNumber.bind(this);
@@ -48,7 +49,10 @@ export default class Pokemons extends Component {
 
     this.setState({
       user: userlog,
+      score:userlog.score
     });
+
+    console.log('this.state.score',this.state.score);
 
     /*after add some pokemon will refresh the pokemon*/
     await this.triggerUpdateUsersForScore();
@@ -70,7 +74,11 @@ export default class Pokemons extends Component {
   async triggerUpdatePokemon(pokemonChange) {
     const id = this.props.user._id;
     const pokemon = pokemonChange.pokemon;
-    const score = this.props.user.score;
+    const score = this.state.score;
+
+    console.log('id',id);
+    console.log('pokemon',pokemon);
+    console.log('score',score);
 
     if (score >= 25) {
       /*RETIRAR O ANTIGO POKEMON*/
@@ -78,7 +86,7 @@ export default class Pokemons extends Component {
 
       await this.RandomNumber();
       const newPokemon = await this.triggerPokemon(this.state.numberIdPokemon);
-
+      console.log('newPokemon',newPokemon);
       await this.addPokemon(id, newPokemon);
       await this.fetchData();
     }
@@ -145,7 +153,7 @@ export default class Pokemons extends Component {
                         battle={false}
                         style={pokemonNameUsed === pokemon.pokemon ? 'disabled' : 'active'}
                         randomPokemon={this.triggerUpdatePokemon}
-
+                        score={this.state.score}
                       />
                   
                   </div>

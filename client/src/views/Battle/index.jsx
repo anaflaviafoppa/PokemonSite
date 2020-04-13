@@ -123,6 +123,7 @@ export default class Battle extends Component {
         scoreBefore: this.state.scoreBefore,
         score: score,
         pokemonNameUsed: this.state.pokemonUser.pokemon,
+        
       },
     });
   }

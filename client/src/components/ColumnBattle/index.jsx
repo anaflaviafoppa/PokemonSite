@@ -113,22 +113,27 @@ export default class ColumnBattle extends Component {
                     </OverlayTrigger>
                   )}
                 </div>
-                <div className="btn-refresh-pokemon">
-                  <h3>HP: {this.props.pokemon.statsNumber[5]}</h3>
-                  {this.props.style !== 'disabled' && (
-                    <OverlayTrigger
-                      overlay={
-                        <Tooltip id="tooltip-disabled">This will cost you 25 points!</Tooltip>
-                      }
-                    >
-                      <span className="d-inline-block">
-                        <button onClick={() => this.props.randomPokemon(this.props.pokemon)}>
-                          Change <MdCached />
-                        </button>
-                      </span>
-                    </OverlayTrigger>
-                  )}
-                </div>
+                
+                  <div className="btn-refresh-pokemon">
+                    <h3>HP: {this.props.pokemon.statsNumber[5]}</h3>
+                    {this.props.score > 25 && (
+                      <div>
+                    {this.props.style !== 'disabled' && (
+                      <OverlayTrigger
+                        overlay={
+                          <Tooltip id="tooltip-disabled">This will cost you 25 points!</Tooltip>
+                        }
+                      >
+                        <span className="d-inline-block">
+                          <button onClick={() => this.props.randomPokemon(this.props.pokemon)}>
+                            Change <MdCached />
+                          </button>
+                        </span>
+                      </OverlayTrigger>
+                    )}
+                    </div>)}
+                  </div>
+                
 
                 <div className="ColumnBattle-img">
                   <img src={this.props.pokemon.picture} alt={this.props.pokemon.pokemon} />
