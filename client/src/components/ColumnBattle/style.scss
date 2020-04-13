@@ -21,7 +21,7 @@
   box-shadow: 10px 10px 10px 8px rgba(0, 0, 0, 0.1);
 
   @media (max-width: $breakpoint-tablet) and (min-width: $breakpoint-cellphone+1){
-    width: 90vw;
+    width: 65vw;
   }
 
   @media (max-width: $breakpoint-cellphone) {
@@ -116,8 +116,9 @@
 
   .btn-battle {
     background-color: $yellow;
-    margin: 0.5em auto;
-    min-width: 15em;
+    margin: 0.5em 1em;
+    //min-width: 15em;
+    width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
