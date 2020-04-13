@@ -11,13 +11,13 @@ const RandomPokemon = (props) => {
   return (
     <div className="columnBattle randomPokemon">
       {props.battle ? (
-        <div>
+        <div className="randomPokemon-battle">
           <h2>{props.pokemon.name}</h2>
           <div className="ColumnBattle-img">
             <img src={props.pokemon.sprites.front_default} alt={props.pokemon.name} />
           </div>
           <div className="question-mark">
-            <h2>Your Opponent:</h2>
+            <h3 className="h3-battle">Your Opponent:</h3>
             <img src="./images/question.png" alt="question"></img>
           </div>
         </div>

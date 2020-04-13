@@ -7,42 +7,35 @@
 .randomPokemon {
   margin: 0 auto !important;
   background-color: $blue !important;
+  width: 28vw;
   
+  @media (max-width: $breakpoint-large) and (min-width: $breakpoint-desktop+1){
+    width: 28vw;
+  }
+
+  @media (max-width: $breakpoint-desktop) and (min-width: $breakpoint-tablet+1){
+    width: 35vw;
+  }
+
+
   @media (max-width: $breakpoint-tablet) and (min-width: $breakpoint-cellphone+1){
-    width: 65vw;
+    width: 60vw;
   }
 
   @media (max-width: $breakpoint-cellphone) {
     min-width: 85vw !important;
-    margin-left: 1.5em;
-    margin-right: 1.5em;
   }
 
-  @media (min-width: $breakpoint-desktop) and (max-width: $breakpoint-large) {
-    min-width: 25vw;
-  }
-
+  
   .question-mark {
-    text-align: center;
-    margin-top: 5em;
-    margin-bottom: 2em;
-
-    min-width: 20vw;
-    max-height: 690px;
-    margin: 1em auto;
-
-    @media (max-width: $breakpoint-tablet) {
-      //min-width: 90vw;
-      margin-bottom: 2em;
+   
+    text-align: center !important;
+    img{
+      margin-top: 2em;
     }
-
-    @media (min-width: $breakpoint-desktop) and (max-width: $breakpoint-large) {
-      min-width: 30vw;
-    }
-
+    
     h2 {
-      text-align: center !important;
-      margin: 0 auto;
+      margin: 0 auto 1em auto;
       color: $gray;
       font-weight: 800;
       margin-bottom: 2em;

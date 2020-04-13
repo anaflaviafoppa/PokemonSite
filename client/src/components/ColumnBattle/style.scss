@@ -11,32 +11,31 @@
 .columnBattle {
   background-color: $orange;
   border-radius: 1em;
-  padding: 1.5em;
-  min-width: 20vw;
+  padding-top: 1.5em;
+  padding-bottom: 1.5em;
+  margin: 0 auto;
   min-height: 690px;
-  margin: 1em auto;
+  width: 20vw;
+
+  @media (max-width: $breakpoint-large) and (min-width: $breakpoint-desktop+1) {
+    width: 28vw;
+  }
+
+  @media (max-width: $breakpoint-desktop) and (min-width: $breakpoint-tablet+1) {
+    width: 35vw;
+  }
+
+  @media (max-width: $breakpoint-tablet) and (min-width: $breakpoint-cellphone+1) {
+    width: 60vw;
+  }
+
+  @media (max-width: $breakpoint-cellphone) {
+    min-width: 80vw !important;
+  }
 
   -webkit-box-shadow: 10px 10px 10px 8px rgba(0, 0, 0, 0.1);
   -moz-box-shadow: 10px 10px 10px 8px rgba(0, 0, 0, 0.1);
   box-shadow: 10px 10px 10px 8px rgba(0, 0, 0, 0.1);
-
-  @media (max-width: $breakpoint-tablet) and (min-width: $breakpoint-cellphone+1){
-    width: 65vw;
-  }
-
-  @media (max-width: $breakpoint-cellphone) {
-    min-width: 85vw !important;
-    margin-left: 1.5em;
-    margin-right: 1.5em;
-  }
-
-
-  @media (min-width: $breakpoint-desktop) and (max-width: $breakpoint-large) {
-    min-width: 19vw;
-    margin-left: 1em;
-  }
-
-  
 
   h2 {
     text-transform: uppercase;
@@ -47,7 +46,7 @@
     font-family: $work;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
     font-size: $pDesktop;
 
     @media (max-width: $breakpoint-cellphone) {
@@ -101,7 +100,6 @@
 
   .h3-battle {
     text-align: center !important;
-   
   }
 
   .row-choose {
@@ -119,16 +117,18 @@
     background-color: $yellow;
     margin: 0.5em 1em;
     //min-width: 15em;
-    width: 100%;
+    width: 80%;
+
     display: flex;
     justify-content: space-between;
     align-items: center;
-    
-    
-    @media(max-width: $breakpoint-cellphone){
-      width: 80vw;
 
-      p{
+    @media (max-width: $breakpoint-cellphone) {
+      //
+      margin-bottom: 1em;
+      padding: 0.8em 1.9em;
+
+      p {
         font-size: $h3Desktop;
       }
     }
@@ -152,7 +152,6 @@
     left: 3em;
     bottom: 3em;
     margin-bottom: -4em;
-    
 
     img {
       width: 5em;
