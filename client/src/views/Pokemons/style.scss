@@ -36,10 +36,10 @@
 
       .row-Cards {
         margin: 2em auto;
-        padding: 0 12em;
+        padding: 0 3em;
 
         @media (max-width: $breakpoint-cellphone) {
-          padding: 0 1em;
+          padding: 0 0.4em;
         }
       }
     }

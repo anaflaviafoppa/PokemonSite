@@ -7,6 +7,20 @@
 .randomPokemon {
   margin: 1em auto;
   background-color: $blue !important;
+  
+  @media (max-width: $breakpoint-tablet) and (min-width: $breakpoint-cellphone+1){
+    width: 65vw;
+  }
+
+  @media (max-width: $breakpoint-cellphone) {
+    min-width: 85vw !important;
+    margin-left: 1.5em;
+    margin-right: 1.5em;
+  }
+
+  @media (min-width: $breakpoint-desktop) and (max-width: $breakpoint-large) {
+    min-width: 25vw;
+  }
 
   .question-mark {
     text-align: center;
