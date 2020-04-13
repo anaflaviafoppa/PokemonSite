@@ -19,7 +19,7 @@ But, remenber, this change will cost you 25 points!
 - NodeJs
 - Express
 - MongoDB
-- API: Pokemon
+- API: See more in [https://pokeapi.co/](PokéAPI) 
 
 
 ## Available Scripts
