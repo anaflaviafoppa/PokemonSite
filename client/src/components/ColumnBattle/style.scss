@@ -11,18 +11,17 @@
 .columnBattle {
   background-color: $orange;
   border-radius: 1em;
-  padding-top: 1.5em;
-  padding-bottom: 1.5em;
+  padding: 1.5em ;
   margin: 0 auto;
   min-height: 690px;
   width: 20vw;
 
   @media (max-width: $breakpoint-large) and (min-width: $breakpoint-desktop+1) {
-    width: 28vw;
+    width: 25vw;
   }
 
   @media (max-width: $breakpoint-desktop) and (min-width: $breakpoint-tablet+1) {
-    width: 35vw;
+    width: 32vw;
   }
 
   @media (max-width: $breakpoint-tablet) and (min-width: $breakpoint-cellphone+1) {
@@ -44,10 +43,9 @@
   li {
     color: white;
     font-family: $work;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    text-align: justify;
     font-size: $pDesktop;
+    list-style: none;
 
     @media (max-width: $breakpoint-cellphone) {
       font-size: $pCellphone;
