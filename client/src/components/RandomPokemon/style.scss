@@ -5,7 +5,7 @@
 @import '../style/common';
 
 .randomPokemon {
-  margin: 1em auto;
+  margin: 0 auto !important;
   background-color: $blue !important;
   
   @media (max-width: $breakpoint-tablet) and (min-width: $breakpoint-cellphone+1){
